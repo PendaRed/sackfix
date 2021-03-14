@@ -8,7 +8,7 @@ Hope you find it useful.
 
 ## Versions
 
-JDK 1.8, Scala 2.11, SBT 0.13.12, Akka 2.4.16.   Feel free to upgrade.
+JDK 1.8, Scala 2.11, SBT 1.4.7, Akka 2.4.16.   Feel free to upgrade.
 
 ## What is this project?
 
@@ -18,7 +18,13 @@ You should really have no need to checkout this project unless you want to chang
 
 ## I want to build it anyway
 
-Check it out and use sbt.
+Check it out and use sbt.   You can get the fix xml specs from org.quickfixj, which is on 2.2.0 as I rework for Scala 2.13.
+ie download it, unzip it, and you will find the xml files in:
+
+org.quickfixj-2.2.0\etc
+
+You can then generate all the messages by running:
+SfCodeGen /java/org.quickfixj-1.6.0/etc/FIX44.xml /all_dev/scala/sackfix/sackfixcodegen/src/generated org.sackfix org.sackfix.fix44
 
 Best wishes,
 Jonathan

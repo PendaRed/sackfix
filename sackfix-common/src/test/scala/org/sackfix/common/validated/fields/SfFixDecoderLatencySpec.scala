@@ -1,6 +1,6 @@
 package org.sackfix.common.validated.fields
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
 import scala.collection.immutable.HashSet
 
@@ -8,7 +8,7 @@ import scala.collection.immutable.HashSet
 /**
   * Created by Jonathan during 2017.
   */
-class SfFixDecoderLatencySpec extends FlatSpec{
+class SfFixDecoderLatencySpec extends AnyFlatSpec{
   behavior of "SfFixDecoder"
 
   it should "measure latency" in {

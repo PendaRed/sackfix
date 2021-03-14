@@ -24,22 +24,22 @@ object SfConfigUtils {
   }
 
   def getOptionalInetAddressList(config: Config, configItemName: String): Option[List[InetAddress]] = {
-    if (config hasPath (configItemName)) Some(config.getString(configItemName).split(",").map( str => toInetAddress(config, str.trim)).toList)
+    if (config hasPath configItemName) Some(config.getString(configItemName).split(",").map( str => toInetAddress(config, str.trim)).toList)
     else None
   }
   def getOptionalString(config: Config, configItemName: String): Option[String] = {
-    if (config hasPath (configItemName)) Some(config.getString(configItemName)) else None
+    if (config hasPath configItemName) Some(config.getString(configItemName)) else None
   }
 
   def getOptionalInt(config: Config, configItemName: String): Option[Int] = {
-    if (config hasPath (configItemName)) Some(config.getInt(configItemName)) else None
+    if (config hasPath configItemName) Some(config.getInt(configItemName)) else None
   }
 
   def getOptionalYN(config: Config, configItemName: String): Option[Boolean] = {
-    if (config hasPath (configItemName)) Some(toBooleanFromYN(config, configItemName)) else None
+    if (config hasPath configItemName) Some(toBooleanFromYN(config, configItemName)) else None
   }
 
   def getOptionalInetAddress(config: Config, configItemName: String): Option[InetAddress] = {
-    if (config hasPath (configItemName)) Some(toInetAddress(config, configItemName)) else None
+    if (config hasPath configItemName) Some(toInetAddress(config, configItemName)) else None
   }
 }

@@ -3,15 +3,13 @@ package org.sackfix.codegen
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-import org.sackfix.common.validated.fields.SfFixRenderable
-
-import scala.collection.mutable.StringBuilder
+import scala.collection.mutable.ArrayBuffer
 
 /**
   * Created by Jonathan during 2016.
   */
 object SfCodeGeneratorMessage {
-  def paramName(v:String) = {
+  def paramName(v:String): String = {
     ""+v.charAt(0).toLower+v.substring(1)
   }
   def getMessageClassName(nm: String) : String = {
@@ -129,7 +127,7 @@ class SfCodeGeneratorMessage(val fixVersionName:String,
     // get the single value, which will work for everything.
     val generatedClassName = SfCodeGeneratorMessage.getFieldClassName(f, fixVersionName, fieldByUpperNameAndSpecName)
     s"${SfCodeGeneratorMessage.paramName (generatedClassName)}:" +
-      s"${if (f.required) "" else "Option["}${generatedClassName}${if (f.required) "" else "]=None"}"
+      s"${if (f.required) "" else "Option["}$generatedClassName${if (f.required) "" else "]=None"}"
   }
 
   private def generateComponentCtorSection(f:FixComponentDef):String = {
@@ -237,11 +235,11 @@ class SfCodeGeneratorMessage(val fixVersionName:String,
 
       if (groupDef.required) {
         s"""${pad}if ($countFieldName.value != $groupFieldName.size)
-           |${pad}  throw SfRepeatingGroupCountException($fieldClassName.TagId,$countFieldName.value, $groupFieldName.size)
+           |$pad  throw SfRepeatingGroupCountException($fieldClassName.TagId,$countFieldName.value, $groupFieldName.size)
            |"""
       } else {
         s"""${pad}if ($countFieldName.map(_.value).getOrElse(0) != $groupFieldName.map(_.size).getOrElse(0))
-        |${pad}  throw SfRepeatingGroupCountException($fieldClassName.TagId,$countFieldName.map(_.value).getOrElse(0), ${groupFieldName}.map(_.size).getOrElse(0))
+        |$pad  throw SfRepeatingGroupCountException($fieldClassName.TagId,$countFieldName.map(_.value).getOrElse(0), $groupFieldName.map(_.size).getOrElse(0))
         |"""
       }
     case _=> ""
@@ -250,7 +248,7 @@ class SfCodeGeneratorMessage(val fixVersionName:String,
   /**
     * Adds the isMandatoryField, isOptionalField and isFieldOf to the companion object
     */
-  def generateFieldCheckMethods = {
+  def generateFieldCheckMethods: String = {
     val mandFlds = msgDef.subElements.filter(_ match {
       case f: FixOptionalFieldDef => f.required
       case _ => true
@@ -288,8 +286,8 @@ class SfCodeGeneratorMessage(val fixVersionName:String,
   }
 
 
-  private def generateContentField(hashSetName:String, flds : Seq[FixNodeDef],
-                                   groupsAndComponents:Seq[FixNodeDef]):String = {
+  private def generateContentField(hashSetName:String, flds : ArrayBuffer[FixNodeDef],
+                                   groupsAndComponents:ArrayBuffer[FixNodeDef]):String = {
     s"""  override val ${hashSetName}Fields = HashSet[Int](${
       flds.filter(!_.isInstanceOf[FixComponentDef]).zipWithIndex.map{
         case (subElement:FixNodeDef, i) => addMandOptField(subElement,i)}.mkString(", ")+ ")"
@@ -301,7 +299,7 @@ class SfCodeGeneratorMessage(val fixVersionName:String,
   }
 
   private def generateSubContentIsPredicate(hashSetName:String,
-                                            groupsAndComponents:Seq[FixNodeDef]):String = {
+                                            groupsAndComponents:ArrayBuffer[FixNodeDef]):String = {
     if (groupsAndComponents.isEmpty) ""
     else {
       " || "+groupsAndComponents.zipWithIndex.map{case (n:FixNodeDef, i:Int) =>addIsPredicate(hashSetName, n,i)}.mkString(" || ")

@@ -1,11 +1,11 @@
 package org.sackfix.codegen
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
 /**
   * Created by Jonathan during 2016.
   */
-class FixMessageDefSpec extends FlatSpec {
+class FixMessageDefSpec extends AnyFlatSpec {
 
   behavior of "FixMessageDef"
 

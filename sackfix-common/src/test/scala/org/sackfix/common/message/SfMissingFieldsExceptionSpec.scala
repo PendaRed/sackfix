@@ -1,11 +1,12 @@
 package org.sackfix.common.message
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
+
 
 /**
   * Created by Jonathan during 2016.
   */
-class SfMissingFieldsExceptionSpec extends FlatSpec {
+class SfMissingFieldsExceptionSpec extends AnyFlatSpec {
   behavior of "SfMissingFieldsException"
 
   it should "generate the correct String" in {

@@ -8,13 +8,14 @@ resolvers += Resolver.url("scoverage-bintray", url("https://dl.bintray.com/sksam
 // Multi project build file.  For val xxx = project, xxx is the name of the project and base dir
 lazy val commonSettings = Seq(
 	organization := "org.sackfix",
-	version := "0.1.0",
-	scalaVersion := "2.11.7",
-	libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test",
-	libraryDependencies += "com.typesafe" % "config" % "1.3.0",
+	version := "0.1.3",
+	scalaVersion := "2.13.5",
+	libraryDependencies += "org.scalatest" %% "scalatest" % "3.2.6" % "test",
+	libraryDependencies += "com.typesafe" % "config" % "1.4.1",
 //	coverageEnabled := true
   // Configuring publish to Sonartype, http://www.scala-sbt.org/release/docs/Using-Sonatype.html
-  useGpg := true,
+	// ie at https://github.com/sbt/sbt-pgp#sbt-pgp
+//  useGpg := true,
   pomIncludeRepository := { _ => false },
   licenses := Seq("MIT License" -> url("http://www.opensource.org/licenses/mit-license.php")),
   homepage := Some(url("http://www.sackfix.org/")),
@@ -54,9 +55,9 @@ lazy val sackfixcodegen = (project in file("./sackfix-codegen")).
 	settings(commonSettings: _*).
 	settings(
 		name := "sackfix-codegen",
-  	libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.0.3",
-		libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.3",
-		libraryDependencies += "org.scala-lang.modules" %% "scala-swing" % "1.0.1"
+  	libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.3.0",
+		libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.2",
+		libraryDependencies += "org.scala-lang.modules" %% "scala-swing" % "3.0.0"
 	)
 
 val sackfix = (project in file(".")).aggregate(sackfixcommon, sackfixcodegen)

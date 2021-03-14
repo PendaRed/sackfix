@@ -1,13 +1,13 @@
 package org.sackfix.common.validated.fields
 
-import java.time.{LocalDate, LocalDateTime, YearMonth}
+import org.scalatest.flatspec.AnyFlatSpec
 
-import org.scalatest.FlatSpec
+import java.time.LocalDate
 
 /**
   * Created by Jonathan during 2016.
   */
-class SfFieldMonthYearSpec extends FlatSpec {
+class SfFieldMonthYearSpec extends AnyFlatSpec {
   behavior of "SfFieldMonthYear"
 
   it should "handle ctor, equals" in {

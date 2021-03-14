@@ -1,13 +1,13 @@
 package org.sackfix.common.validated.fields
 
-import java.time.{LocalDate, LocalDateTime}
+import org.scalatest.flatspec.AnyFlatSpec
 
-import org.scalatest.FlatSpec
+import java.time.LocalDate
 
 /**
   * Created by Jonathan during 2016.
   */
-class SfFieldLocalMkdDateSpec extends FlatSpec {
+class SfFieldLocalMkdDateSpec extends AnyFlatSpec {
   behavior of "SfFieldLocalMktDate"
 
   it should "handle ctor, equals" in {

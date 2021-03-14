@@ -4,13 +4,13 @@ import java.time._
 import java.time.format.DateTimeFormatter
 import java.time.temporal.TemporalAccessor
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 import sun.util.calendar.ZoneInfo
 
 /**
   * Created by Jonathan during 2016.
   */
-class SfFieldTzTimeOnlyTest extends FlatSpec {
+class SfFieldTzTimeOnlyTest extends AnyFlatSpec {
   behavior of "SfFieldTzTimeOnly"
 
   it should "render to fix" in {
@@ -19,7 +19,7 @@ class SfFieldTzTimeOnlyTest extends FlatSpec {
     assert("42=20:10:48+01:00\u0001" == fld.fixStr)
   }
 }
-class SfFieldTzTimeStampTest extends FlatSpec {
+class SfFieldTzTimeStampTest extends AnyFlatSpec {
   behavior of "SfFieldTzTimeOnly"
 
   it should "render to fix" in {
@@ -28,7 +28,7 @@ class SfFieldTzTimeStampTest extends FlatSpec {
     assert("42=19480428-20:10:48+04\u0001" == fld.fixStr)
   }
 }
-class SfFieldUtcDateOnlyTest extends FlatSpec {
+class SfFieldUtcDateOnlyTest extends AnyFlatSpec {
   behavior of "SfFieldTzTimeOnly"
 
   it should "render to fix" in {
@@ -36,7 +36,7 @@ class SfFieldUtcDateOnlyTest extends FlatSpec {
     assert("42=19480428\u0001" == fld.fixStr)
   }
 }
-class SfFieldUtcTimeOnlyTest extends FlatSpec {
+class SfFieldUtcTimeOnlyTest extends AnyFlatSpec {
   behavior of "SfFieldTzTimeOnly"
 
   it should "render to fix" in {
@@ -44,7 +44,7 @@ class SfFieldUtcTimeOnlyTest extends FlatSpec {
     assert("42=20:10:48\u0001" == fld.fixStr)
   }
 }
-class SfFieldUtcTimeStampTest extends FlatSpec {
+class SfFieldUtcTimeStampTest extends AnyFlatSpec {
   behavior of "SfFieldTzTimeOnly"
 
   it should "render to fix" in {

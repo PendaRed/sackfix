@@ -7,12 +7,12 @@ import java.util.Map.Entry
 import java.util.concurrent.TimeUnit
 
 import com.typesafe.config.{ConfigMemorySize, ConfigObject, ConfigResolveOptions, _}
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
 /**
   * Created by Jonathan during 2016.
   */
-class SfSettingsTest extends FlatSpec {
+class SfSettingsTest extends AnyFlatSpec {
   behavior of "SfSettings"
 
   it should "load the configs" in {

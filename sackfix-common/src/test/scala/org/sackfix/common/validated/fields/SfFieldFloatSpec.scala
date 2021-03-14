@@ -1,11 +1,11 @@
 package org.sackfix.common.validated.fields
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
 /**
   * Created by Jonathan during 2016.
   */
-class SfFieldFloatSpec extends FlatSpec {
+class SfFieldFloatSpec extends AnyFlatSpec {
   behavior of "SfFieldFloat"
 
   it should "handle ctor, equals" in {

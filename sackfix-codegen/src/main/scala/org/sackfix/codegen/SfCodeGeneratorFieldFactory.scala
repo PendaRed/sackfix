@@ -2,13 +2,14 @@ package org.sackfix.codegen
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import scala.collection.mutable.ArrayBuffer
 
 /**
   * Created by Jonathan during 2016.
   */
 class SfCodeGeneratorFieldFactory(val sourceXmlSpenFileName: String, val packageName: String,
                                   val cname: String,
-                                  fields: Seq[FixFieldDetail]) {
+                                  fields: ArrayBuffer[FixFieldDetail]) {
 
   /**
     * For a field definition this generates the full class file.
@@ -20,7 +21,7 @@ class SfCodeGeneratorFieldFactory(val sourceXmlSpenFileName: String, val package
   private def generateFieldCreator: String = {
     s"""object $cname {
         |
-        |${generateFieldLookup}
+        |$generateFieldLookup
         |
         |  def createField(t:Int, v:Option[Any]):Option[SfFixField[Any]] = {
         |    t match {

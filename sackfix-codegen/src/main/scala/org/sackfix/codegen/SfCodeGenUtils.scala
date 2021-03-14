@@ -9,13 +9,13 @@ object SfCodeGenUtils {
     * Utility which turns a string "I_AM_AN_EXAMPLE" into "IAmAnExample", work delims are _ or " "
     */
   def makeUpperCamelCase(valueName: String): String = {
-    makeCamelCase(valueName, true)
+    makeCamelCase(valueName, firstCharUpper = true)
   }
   /**
     * Utility which turns a string "I_AM_AN_EXAMPLE" into "iAmAnExample", work delims are _ or " "
     */
   def makeLowerCamelCase(valueName: String): String = {
-    makeCamelCase(valueName, false)
+    makeCamelCase(valueName, firstCharUpper = false)
   }
 
   private def makeCamelCase(v:String, firstCharUpper:Boolean) = {

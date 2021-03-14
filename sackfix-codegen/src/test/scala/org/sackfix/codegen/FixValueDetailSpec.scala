@@ -1,11 +1,11 @@
 package org.sackfix.codegen
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
 /**
   * Created by Jonathan during 2016.
   */
-class FixValueDetailSpec extends FlatSpec {
+class FixValueDetailSpec extends AnyFlatSpec {
 
   behavior of "FixValueDetail"
 

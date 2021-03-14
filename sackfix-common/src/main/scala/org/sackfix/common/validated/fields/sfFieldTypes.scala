@@ -13,19 +13,19 @@ import java.time.temporal.TemporalAccessor
   * @see http://fixwiki.org/fixwiki/Category:Type
   */
 object SfFixDateFormats {
-  val localMktDate = DateTimeFormatter.BASIC_ISO_DATE
-  val monthYear = DateTimeFormatter.ofPattern("yyyyMM")
-  val monthYearWw = DateTimeFormatter.ofPattern("yyyyMM'w'W")
-  val tzTimeOnly = DateTimeFormatter.ISO_OFFSET_TIME  //ofPattern("HH:mm:ss X") // HH:MM[:SS][Z[ +- hh[:mm]
-  val tzTimeStamp = DateTimeFormatter.ofPattern("yyyMMdd-HH:mm:ss[.SSS]X")  //YYYYMMDD-HH:MM:SS.sss*[Z[ + - hh[:mm]]]   ISO 8601
-  val utcDateOnly = localMktDate
-  val utcTimeOnly = DateTimeFormatter.ISO_LOCAL_TIME
-  val utcTimeStamp = DateTimeFormatter.ofPattern("yyyyMMdd-HH:mm:ss[.SSS]")
+  val localMktDate: DateTimeFormatter = DateTimeFormatter.BASIC_ISO_DATE
+  val monthYear: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMM")
+  val monthYearWw: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMM'w'W")
+  val tzTimeOnly: DateTimeFormatter = DateTimeFormatter.ISO_OFFSET_TIME  //ofPattern("HH:mm:ss X") // HH:MM[:SS][Z[ +- hh[:mm]
+  val tzTimeStamp: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyMMdd-HH:mm:ss[.SSS]X")  //YYYYMMDD-HH:MM:SS.sss*[Z[ + - hh[:mm]]]   ISO 8601
+  val utcDateOnly: DateTimeFormatter = localMktDate
+  val utcTimeOnly: DateTimeFormatter = DateTimeFormatter.ISO_LOCAL_TIME
+  val utcTimeStamp: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd-HH:mm:ss[.SSS]")
 }
 
 object SfFixField {
-  val SOH = 1.toChar
-  val SOH_STR = s"${SOH}"
+  val SOH: Char = 1.toChar
+  val SOH_STR = s"$SOH"
 }
 
 trait SfFixRenderable {
@@ -34,15 +34,15 @@ trait SfFixRenderable {
 }
 
 abstract class SfFixField[+T](val tagId: Int, val value: T) extends SfFixRenderable {
-  lazy val fixStr = appendFixStr(new StringBuilder()).toString
+  lazy val fixStr: String = appendFixStr(new StringBuilder()).toString
 
   def appendFixStr(b:StringBuilder) :StringBuilder=
     b.append(tagId.toString).append("=")
     .append(value.toString)
     .append(SfFixField.SOH_STR)
 
-  override def toString = appendStringBuilder().toString
-  def appendStringBuilder(b:StringBuilder = new StringBuilder()) = b.append(s"$tagId=$value")
+  override def toString: String = appendStringBuilder().toString
+  def appendStringBuilder(b:StringBuilder = new StringBuilder()): StringBuilder = b.append(s"$tagId=$value")
 
   def canEqual(other: Any): Boolean = other.isInstanceOf[SfFixField[T]]
 
@@ -63,10 +63,7 @@ abstract class SfFixField[+T](val tagId: Int, val value: T) extends SfFixRendera
 class SfFieldBoolean(override val tagId: Int, override val value: Boolean) extends SfFixField(tagId, value) {
   override def appendFixStr(b:StringBuilder) : StringBuilder = b.append(tagId.toString).append("=")
       . append({
-    value match {
-      case true => "Y"
-      case _ => "N"
-    }
+    if (value) "Y" else "N"
   }).append(SfFixField.SOH_STR)
 }
 
