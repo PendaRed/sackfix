@@ -332,19 +332,4 @@ object SfCodeGen extends App {
     val subDir = packageName.replace('.', File.separatorChar)
     localisedOutputDir + (if (!outputDir.endsWith(File.pathSeparator)) File.separator else "") + subDir
   }
-
-  //  SfCodeGenerator.generate(args(1), args(2))
-
-
-  def usage(): Unit = {
-    println(
-      """Usage:  SfCodeGen filename outputdir fieldspackage messagesPackage
-        |   where filename        : full path to quickfix4j fix xml defn
-        |         outputdir       : The base directory to generate the classes
-        |         fieldspackage   : the package to generate the field classes in
-        |         messagespackage : the package to generate the messages classes in
-        |
-        |   e.g.  SfCodeGen /java/org.quickfixj-1.6.0/etc/FIX44.xml /all_dev/scala/sackfix/sackfixcodegen/src/generated org.sackfix org.sackfix.fix44
-      """.stripMargin)
-  }
 }

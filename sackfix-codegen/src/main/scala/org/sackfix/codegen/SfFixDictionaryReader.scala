@@ -11,13 +11,13 @@ object SfFixDictionaryReader {
 }
 
 class SfFixDictionaryReader {
-  private val fieldMap = scala.collection.mutable.Map[String, FixFieldDetail]()
-  private val messages = new ArrayBuffer[FixMessageDef]
-  private val components = new ArrayBuffer[FixComponentDetail]
-  private val fields = new ArrayBuffer[FixFieldDetail]
-  private val groups = scala.collection.mutable.Map.empty[String, FixGroupDef]
-  private val headerObj = new FixNodeDef("header", "HeaderComponent")
-  private val trailerObj = new FixNodeDef("trailer", "TrailerComponent")
+  val fieldMap = scala.collection.mutable.Map[String, FixFieldDetail]()
+  val messages = new ArrayBuffer[FixMessageDef]
+  val components = new ArrayBuffer[FixComponentDetail]
+  val fields = new ArrayBuffer[FixFieldDetail]
+  val groups = scala.collection.mutable.Map.empty[String, FixGroupDef]
+  val headerObj = new FixNodeDef("header", "HeaderComponent")
+  val trailerObj = new FixNodeDef("trailer", "TrailerComponent")
 
   /**
     * Read the quickfix4j fix definitions
