@@ -4,19 +4,18 @@ April 9th 2017
 Install Gnu GP and generated the PGP key using Kleopatra
 
 To make my gpg pass phrase available, BUT not checked in, do this
-Edit C:\Users\Jonathan\.sbt\0.13\plugins\pgp.sbt
-addSbtPlugin("com.jsuereth" % "sbt-pgp" % "1.0.0")
+Edit C:\Users\Jonathan\.sbt\1.0\plugins\pgp.sbt
+addSbtPlugin("com.github.sbt" % "sbt-pgp" % "2.1.2")
 
-
-Edit C:\Users\Jonathan\.sbt\0.13\pgp.sbt
+Edit C:\Users\Jonathan\.sbt\1.0\pgp.sbt
 
 and add
 
-com.typesafe.sbt.pgp.PgpKeys.pgpSecretRing := file("/Users/Jonathan/AppData/Roaming/gnupg/secring.gpg")
+pgpSecretRing := file("/Users/Jonathan/AppData/Roaming/gnupg/secring.gpg")
 
-com.typesafe.sbt.pgp.PgpKeys.pgpPublicRing := file("/Users/Jonathan/AppData/Roaming/gnupg/pubring.gpg")
+pgpPublicRing := file("/Users/Jonathan/AppData/Roaming/gnupg/pubring.gpg")
 
-com.typesafe.sbt.pgp.PgpKeys.pgpPassphrase := Some(Array('p','a','s','s','w','o','r','d','1'))
+pgpPassphrase := Some(Array('p','a','s','s','w','o','r','d','1'))
 
 ==========================
 Configure Sonartype

@@ -6,3 +6,5 @@
 */logs
 */.idea
 */.bsp
+/.bsp/sbt.json
+/project/project/
