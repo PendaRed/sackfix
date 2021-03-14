@@ -10,8 +10,8 @@ Hope you find it useful.
 
 | Version | Year | built with |
 |---------|------|------------|
-| 0.1.1  | 2017 | JDK 1.8, Scala 2.11, SBT 0.13.12, Akka 2.4.16 |
-| 0.1.3  | 2021 | JDK 1.8, Scala 2.13.5, SBT 1.4.7, Akka 2.4.16 |
+| 0.1.0  | 2017 | JDK 1.8, Scala 2.11, SBT 0.13.12, Akka 2.4.16 |
+| 0.1.3  | 2021 | JDK 1.8, Scala 2.13.5, SBT 1.4.7, Akka 2.6.13 |
 
 Feel free to upgrade and generate your own version.
 
