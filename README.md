@@ -8,6 +8,8 @@ Hope you find it useful.
 
 ## Versions
 
+Upgraded in 2021 to akka typed and scala 2.13.
+
 | Version | Year | built with |
 |---------|------|------------|
 | 0.1.0  | 2017 | JDK 1.8, Scala 2.11, SBT 0.13.12, Akka 2.4.16 |
