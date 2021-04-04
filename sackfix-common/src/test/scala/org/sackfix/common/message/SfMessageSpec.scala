@@ -1,12 +1,12 @@
 package org.sackfix.common.message
 
 import org.sackfix.common.validated.fields.SfFixMessageBody
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
 /**
   * Created by Jonathan during 2016.
   */
-class SfMessageSpec extends FlatSpec {
+class SfMessageSpec extends AnyFlatSpec {
   val SOH = 1.toChar
 
   behavior of "SfMessage"

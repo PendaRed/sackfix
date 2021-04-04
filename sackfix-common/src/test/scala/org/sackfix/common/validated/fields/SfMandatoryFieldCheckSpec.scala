@@ -1,7 +1,7 @@
 package org.sackfix.common.validated.fields
 
 import org.sackfix.common.message.SfMissingFieldsException
-import org.scalatest.{FlatSpec, FunSuite}
+import org.scalatest.flatspec.AnyFlatSpec
 
 import scala.collection.immutable.HashSet
 import scala.collection.mutable
@@ -9,7 +9,7 @@ import scala.collection.mutable
 /**
   * Created by Jonathan during 2016.
   */
-class  SfMandatoryFieldCheckSpec extends FlatSpec {
+class  SfMandatoryFieldCheckSpec extends AnyFlatSpec {
   behavior of "SfMandatoryFieldCheck"
 
   it should "Correctly determine missing mandatory fields" in {

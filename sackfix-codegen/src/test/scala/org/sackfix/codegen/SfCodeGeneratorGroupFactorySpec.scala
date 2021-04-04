@@ -3,12 +3,12 @@ package org.sackfix.codegen
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
 
 /**
   * Created by Jonathan during 2016.
   */
-class SfCodeGeneratorGroupFactorySpec extends FlatSpec with SfGeneratorTestUtil {
+class SfCodeGeneratorGroupFactorySpec extends AnyFlatSpec with SfGeneratorTestUtil {
 
   behavior of "SfCodeGeneratorGroupFactorySpec"
 

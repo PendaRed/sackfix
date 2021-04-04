@@ -1,7 +1,6 @@
 package org.sackfix.codegen
 
 import java.io.File
-
 import scala.collection.mutable.ArrayBuffer
 import scala.xml.{Node, NodeSeq, XML}
 
@@ -23,7 +22,7 @@ class SfFixDictionaryReader {
   /**
     * Read the quickfix4j fix definitions
     */
-  def read(filePath: String) = {
+  def read(filePath: String): Unit = {
     val f: File = new File(filePath)
 
     val root = {
@@ -69,7 +68,7 @@ class SfFixDictionaryReader {
     * Starting from the root element <fix> scan all the sub elements and build up the dictionary I can use for
     * code generation.
     */
-  def buildDictionary(fixElem: NodeSeq) = {
+  def buildDictionary(fixElem: NodeSeq): Unit = {
 
 
     (fixElem \ "header").map { header =>

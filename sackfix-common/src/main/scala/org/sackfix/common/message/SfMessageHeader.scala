@@ -1,9 +1,7 @@
 package org.sackfix.common.message
 
-import org.sackfix.common.validated.fields._
-import org.sackfix.field.{BodyLengthField, LastMsgSeqNumProcessedField, NoHopsField, _}
-import org.sackfix.common.validated.fields.{SfFixDecoder, SfFixFieldsToAscii}
-import org.sackfix.field.{LastMsgSeqNumProcessedField, OnBehalfOfLocationIDField, SecureDataField, TargetCompIDField}
+import org.sackfix.common.validated.fields.{SfFixDecoder, SfFixFieldsToAscii, _}
+import org.sackfix.field.{BodyLengthField, LastMsgSeqNumProcessedField, NoHopsField, OnBehalfOfLocationIDField, SecureDataField, TargetCompIDField, _}
 
 import scala.collection.immutable.HashSet
 
@@ -73,7 +71,7 @@ case class SfMessageHeader(beginStringField: BeginStringField,
     new StringBuilder(beginStringField.fixStr)
       .append(calcBodyLength(fixBodyStr).fixStr).append(fixStrOnce)
 
-  def calcBodyLength(fixBodyStr : StringBuilder) = {
+  def calcBodyLength(fixBodyStr : StringBuilder): BodyLengthField = {
     lastCalculatedBodyLength = BodyLengthField(fixStrOnce.length + fixBodyStr.length)
     lastCalculatedBodyLength
   }
@@ -96,7 +94,7 @@ case class SfMessageHeader(beginStringField: BeginStringField,
     b
   }
 
-  private def format( fmt: ((StringBuilder,SfFixRenderable)=>Unit)): StringBuilder = {
+  private def format( fmt: (StringBuilder,SfFixRenderable)=>Unit): StringBuilder = {
     val b = new StringBuilder()
     fmt(b,msgTypeField)
     applVerIdField.foreach(fmt(b,_))
@@ -132,13 +130,13 @@ case class SfMessageHeader(beginStringField: BeginStringField,
 }
 
 object SfMessageHeader extends SfFixDecoder {
-  override val MandatoryFields = HashSet[Int](BeginStringField.TagId,
+  override val MandatoryFields: HashSet[Int] = HashSet[Int](BeginStringField.TagId,
     BodyLengthField.TagId, MsgTypeField.TagId,
     SenderCompIDField.TagId, TargetCompIDField.TagId,
     MsgSeqNumField.TagId, SendingTimeField.TagId
   )
 
-  override val OptionalFields = HashSet[Int](ApplVerIDField.TagId,
+  override val OptionalFields: HashSet[Int] = HashSet[Int](ApplVerIDField.TagId,
     ApplExtIDField.TagId, CstmApplVerIDField.TagId, OnBehalfOfCompIDField.TagId,
     DeliverToCompIDField.TagId, SecureDataLenField.TagId, SecureDataField.TagId,
     SenderSubIDField.TagId, SenderLocationIDField.TagId, TargetSubIDField.TagId,
@@ -149,17 +147,17 @@ object SfMessageHeader extends SfFixDecoder {
     NoHopsField.TagId
   )
 
-  override lazy val RepeatingGroupsTags = HashSet[Int](NoHopsField.TagId)
+  override lazy val RepeatingGroupsTags: HashSet[Int] = HashSet[Int](NoHopsField.TagId)
 
-  def isMandatoryField(tagId: Int) = MandatoryFields.contains(tagId) || HopsGroup.isMandatoryField(tagId)
+  def isMandatoryField(tagId: Int): Boolean = MandatoryFields.contains(tagId) || HopsGroup.isMandatoryField(tagId)
 
-  def isOptionalField(tagId: Int) = OptionalFields.contains(tagId) || HopsGroup.isOptionalField(tagId)
+  def isOptionalField(tagId: Int): Boolean = OptionalFields.contains(tagId) || HopsGroup.isOptionalField(tagId)
 
   def isFieldOf(tagId: Int): Boolean =
     isMandatoryField(tagId) || isOptionalField(tagId) ||
       HopsGroup.isFieldOf(tagId)
 
-  override def isFirstField(tagId: Int) = tagId == BeginStringField.TagId
+  override def isFirstField(tagId: Int): Boolean = tagId == BeginStringField.TagId
 
   def decode(flds: Seq[(Int, Any)], startPos: Int = 0): Option[SfMessageHeader] = {
     val (_, myFields, nextTagPosLookup) = extractMyFieldsAndPopulatePositions(checkFirstField = false, flds, startPos)

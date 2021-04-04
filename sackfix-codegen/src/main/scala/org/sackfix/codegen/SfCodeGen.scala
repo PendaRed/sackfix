@@ -1,11 +1,9 @@
 package org.sackfix.codegen
 
-import java.io.{File, PrintWriter}
-
-import org.sackfix.codegen.SfSettings.GenerateDetail
 import com.typesafe.config.ConfigFactory
 import org.sackfix.codegen.SfSettings.GenerateDetail
 
+import java.io.{File, PrintWriter}
 import scala.annotation.tailrec
 import scala.collection.mutable.ArrayBuffer
 
@@ -35,23 +33,23 @@ object SfCodeGen extends App {
     case _ => // thats fine then
   }
   config.versionsToGenerate.zipWithIndex.foreach { case (details, index) =>
-    val overwritePreviousFieldDetails :Boolean = details.fixVersionName == config.generateFieldsFirstFrom
+    val overwritePreviousFieldDetails: Boolean = details.fixVersionName == config.generateFieldsFirstFrom
     populateFieldLookup(details, overwritePreviousFieldDetails)
   }
   generateFieldFiles(config.fieldsBaseOutputDir, config.fieldsPackage)
 
   val resortedDetails = ArrayBuffer.empty[GenerateDetail]
-  resortedDetails ++= config.versionsToGenerate.filter( d=>d.fixVersionName == config.generateFieldsFirstFrom)
-  resortedDetails ++= config.versionsToGenerate.filter( d=>d.fixVersionName != config.generateFieldsFirstFrom)
+  resortedDetails ++= config.versionsToGenerate.filter(d => d.fixVersionName == config.generateFieldsFirstFrom)
+  resortedDetails ++= config.versionsToGenerate.filter(d => d.fixVersionName != config.generateFieldsFirstFrom)
 
 
   resortedDetails.zipWithIndex.foreach { case (details, index) =>
-    val deleteFieldsAndRegenerate :Boolean = details.fixVersionName == config.generateFieldsFirstFrom
+    val deleteFieldsAndRegenerate: Boolean = details.fixVersionName == config.generateFieldsFirstFrom
     generateFixCodeFiles(config.fieldsPackage, details, deleteFieldsAndRegenerate)
   }
 
   @tailrec
-  private def addFieldToLookup(fieldDetail:FixFieldDetail, overwritePreviousFieldDetails:Boolean) : FixFieldDetail = {
+  private def addFieldToLookup(fieldDetail: FixFieldDetail, overwritePreviousFieldDetails: Boolean): FixFieldDetail = {
     // ie assign it to its current value, unless it has none, in which case give it a new value
     // but, there is a preferred spec - which should be the latest one, use that field defn in preference
     val upperFieldName = fieldDetail.name.toUpperCase
@@ -63,7 +61,7 @@ object SfCodeGen extends App {
         // If the type is the same can reuse the key
         val newFieldType = SfCodeGeneratorField.generateFieldType(fieldDetail)
         val existingFieldType = SfCodeGeneratorField.generateFieldType(alreadyExists)
-        if (existingFieldType==newFieldType) {
+        if (existingFieldType == newFieldType) {
           if (overwritePreviousFieldDetails) {
             // Sadly the FIX folks changed the TYPE of fields over different versions, for instance
             // NoLegSecurityAltIDField used to be a string and is now a count for a group.
@@ -81,11 +79,9 @@ object SfCodeGen extends App {
 
   /**
     * Different versions of fix can change the case of the field name, and also the type of the field name!
-    * @param details
-    * @param overwritePreviousFieldDetails
     */
   def populateFieldLookup(details: GenerateDetail,
-                          overwritePreviousFieldDetails:Boolean) = {
+                          overwritePreviousFieldDetails: Boolean): Unit = {
     val dictionary = new SfFixDictionaryReader
     dictionary.read(details.inputFile)
 
@@ -94,29 +90,29 @@ object SfCodeGen extends App {
 
       // We now map the old name to the new field details for this version of fix.
       val upperFieldName = fieldDetail.name.toUpperCase
-      val key = upperFieldName+"_"+details.fixVersionName
+      val key = upperFieldName + "_" + details.fixVersionName
       // So, now we want to map the fieldName in upper case, combined with the fix spec name to the
       // field, BUT, its a field with potentially a new name which includes the type
       fieldByUpperNameAndSpecName(key) = revisedFieldDetail
     })
   }
 
-  def camelCase(nm:String):String = {
-    nm.substring(0,1).toUpperCase()+nm.substring(1).toLowerCase
+  def camelCase(nm: String): String = {
+    nm.substring(0, 1).toUpperCase() + nm.substring(1).toLowerCase
   }
 
-  def generateRenamedFieldDetails(fieldDetail:FixFieldDetail, newFieldType:String) :FixFieldDetail = {
+  def generateRenamedFieldDetails(fieldDetail: FixFieldDetail, newFieldType: String): FixFieldDetail = {
     // The type is difference, so change the name
     val postFix = camelCase(newFieldType)
     new FixFieldDetail(fieldDetail.number, fieldDetail.name + postFix,
       fieldDetail.fieldType, fieldDetail.allowOtherValues)
   }
 
-  def generateFieldFiles(baseoutputDir:String, fieldsPackageName: String) = {
-    generateAllFieldsFiles(baseoutputDir, fieldsPackageName, fieldByUpperNameToField.values, true)
+  def generateFieldFiles(baseoutputDir: String, fieldsPackageName: String): Unit = {
+    generateAllFieldsFiles(baseoutputDir, fieldsPackageName, fieldByUpperNameToField.values, deleteExisting = true)
   }
 
-  def generateFixCodeFiles(fieldsPackageName: String, details: GenerateDetail, deleteExistingFieldClasses: Boolean) = {
+  def generateFixCodeFiles(fieldsPackageName: String, details: GenerateDetail, deleteExistingFieldClasses: Boolean): Unit = {
     val dictionary = new SfFixDictionaryReader
     dictionary.read(details.inputFile)
 
@@ -130,7 +126,7 @@ object SfCodeGen extends App {
     //generateGroupConverter(details.inputFile, details.outputBaseDir, fieldsPackageName, details.genPackage,
     //  dictionary.groups.values, deleteExistingFieldClasses)
     generateMessageFactory(details.inputFile, details.outputBaseDir, fieldsPackageName, details.genPackage,
-      dictionary.messages, true)
+      dictionary.messages, deleteExisting = true)
 
     // A one off hack to generate the header message, which I then manually edited to give me the
     // header message.
@@ -148,7 +144,7 @@ object SfCodeGen extends App {
     * regenerate
     */
   def generateAllFieldsFiles(outputDir: String, packageName: String,
-                             fields: Iterable[FixFieldDetail], deleteExisting: Boolean) = {
+                             fields: Iterable[FixFieldDetail], deleteExisting: Boolean): Unit = {
     val baseDir = createDir(outputDir, packageName)
 
     fields.foreach(fieldDetSpec => {
@@ -168,10 +164,10 @@ object SfCodeGen extends App {
           case None => throw new RuntimeException(s"Bug: could not find field in the lookup map [$fieldDetSpec]")
         }
       } catch {
-        case ex : Throwable =>
+        case ex: Throwable =>
           throw new Exception(s"Failed generating field [$fieldDetSpec]", ex)
-        }
       }
+    }
     )
   }
 
@@ -180,7 +176,7 @@ object SfCodeGen extends App {
     * regenerate
     */
   def generateFieldConverter(sourceXmlSpenFileName: String, outputDir: String, packageName: String,
-                             fields: Seq[FixFieldDetail], deleteExisting: Boolean) = {
+                             fields: ArrayBuffer[FixFieldDetail], deleteExisting: Boolean): Unit = {
 
     val baseDir = createDir(outputDir, packageName)
     val classFile = new File(baseDir, "SfFieldFactory.scala")
@@ -203,7 +199,7 @@ object SfCodeGen extends App {
     */
   def generateGroupConverter(sourceXmlSpenFileName: String, outputDir: String,
                              fieldsPackageName: String, packageName: String,
-                             groups: Iterable[FixGroupDef], deleteExisting: Boolean) = {
+                             groups: Iterable[FixGroupDef], deleteExisting: Boolean): Unit = {
     val baseDir = createDir(outputDir, packageName)
     val classFile = new File(baseDir, "SfGroupFactory.scala")
     if (!classFile.exists() || (classFile.exists() && deleteExisting)) {
@@ -220,7 +216,7 @@ object SfCodeGen extends App {
 
   def generateMessageFactory(sourceXmlSpenFileName: String, outputDir: String,
                              fieldsPackageName: String, packageName: String,
-                             messages: Iterable[FixMessageDef], deleteExisting: Boolean) = {
+                             messages: Iterable[FixMessageDef], deleteExisting: Boolean): Unit = {
     val baseDir = createDir(outputDir, packageName)
     val classFile = new File(baseDir, "SfMessageFactory.scala")
     if (!classFile.exists() || (classFile.exists() && deleteExisting)) {
@@ -240,15 +236,15 @@ object SfCodeGen extends App {
     * @param fieldsPackageName Where the fields exist
     * @param packageName       Where this load of messages should be created
     */
-  def generateAllMessageFiles(fixVersionName:String,
+  def generateAllMessageFiles(fixVersionName: String,
                               sourceXmlSpenFileName: String, outputDir: String,
                               fieldsPackageName: String,
                               packageName: String,
-                              messages: ArrayBuffer[FixMessageDef]) = {
+                              messages: ArrayBuffer[FixMessageDef]): Unit = {
     val baseDir = createDir(outputDir, packageName)
 
     messages.foreach(msg => {
-      createClassFile(fixVersionName, baseDir, sourceXmlSpenFileName, fieldsPackageName, packageName, msg.generatedClassName, "SfFixMessageBody", Some("\""+msg.msgType+"\"") ,"SfFixMessageDecoder", msg)
+      createClassFile(fixVersionName, baseDir, sourceXmlSpenFileName, fieldsPackageName, packageName, msg.generatedClassName, "SfFixMessageBody", Some("\"" + msg.msgType + "\""), "SfFixMessageDecoder", msg)
     })
   }
 
@@ -256,24 +252,24 @@ object SfCodeGen extends App {
     * @param fieldsPackageName Where the fields exist
     * @param packageName       Where this load of components should be created
     */
-  def generateAllComponentFiles(fixVersionName:String,
+  def generateAllComponentFiles(fixVersionName: String,
                                 sourceXmlSpenFileName: String, outputDir: String,
                                 fieldsPackageName: String,
                                 packageName: String,
-                                components: ArrayBuffer[FixComponentDetail]) = {
+                                components: ArrayBuffer[FixComponentDetail]): Unit = {
     val baseDir = createDir(outputDir, packageName)
 
     components.foreach(c => {
-      createClassFile(fixVersionName, baseDir, sourceXmlSpenFileName, fieldsPackageName, packageName, c.generatedClassName, "SfFixComponent", None,"SfFixDecoder", c)
+      createClassFile(fixVersionName, baseDir, sourceXmlSpenFileName, fieldsPackageName, packageName, c.generatedClassName, "SfFixComponent", None, "SfFixDecoder", c)
     })
   }
 
   /**
     * @param superClassParams For messages this is a message type string, like "AA"
     */
-  private def createClassFile(fixVersionName:String, baseDir: File, sourceXmlSpenFileName: String, fieldsPackageName: String,
+  private def createClassFile(fixVersionName: String, baseDir: File, sourceXmlSpenFileName: String, fieldsPackageName: String,
                               packageName: String, generatedClassName: String, superClassName: String,
-                              superClassParams:Option[String],decoderSuperClass:String,
+                              superClassParams: Option[String], decoderSuperClass: String,
                               nodeDef: FixNodeDef): Unit = {
     msgCnt = msgCnt + 1
     if (msgCnt < MAX_GEN) {
@@ -298,11 +294,11 @@ object SfCodeGen extends App {
     * Components could be stucck into their own pacakge to differentiate them,
     * but my preference is to name them Component, and Group as group and Message as Message
     */
-  private def generateComponent(fixVersionName:String,baseDir: File, sourceXmlSpenFileName: String, fieldsPackageName: String,
-                                packageName: String, classNamePrefix: String, parentNode: FixNodeDef) = {
+  private def generateComponent(fixVersionName: String, baseDir: File, sourceXmlSpenFileName: String, fieldsPackageName: String,
+                                packageName: String, classNamePrefix: String, parentNode: FixNodeDef): Unit = {
     parentNode.subElements.zipWithIndex.foreach {
       case (component: FixComponentDef, i) =>
-        createClassFile(fixVersionName,baseDir, sourceXmlSpenFileName, fieldsPackageName, packageName, component.generatedClassName, "SfFixComponent", None,"SfFixDecoder", component)
+        createClassFile(fixVersionName, baseDir, sourceXmlSpenFileName, fieldsPackageName, packageName, component.generatedClassName, "SfFixComponent", None, "SfFixDecoder", component)
       case _ =>
     }
   }
@@ -314,11 +310,11 @@ object SfCodeGen extends App {
     * If the group is present then the first element of the group must always be present as it acts
     * as a delimiter
     */
-  private def generateNestedGroups(fixVersionName:String,baseDir: File, sourceXmlSpenFileName: String, fieldsPackageName: String,
-                                   packageName: String, classNamePrefix: String, parentNode: FixNodeDef) = {
+  private def generateNestedGroups(fixVersionName: String, baseDir: File, sourceXmlSpenFileName: String, fieldsPackageName: String,
+                                   packageName: String, classNamePrefix: String, parentNode: FixNodeDef): Unit = {
     parentNode.subElements.zipWithIndex.foreach {
       case (subGroup: FixGroupDef, i) =>
-        createClassFile(fixVersionName,baseDir, sourceXmlSpenFileName, fieldsPackageName, packageName, subGroup.generatedClassName, "SfFixGroup", None,"SfGroupDecoder", subGroup)
+        createClassFile(fixVersionName, baseDir, sourceXmlSpenFileName, fieldsPackageName, packageName, subGroup.generatedClassName, "SfFixGroup", None, "SfGroupDecoder", subGroup)
       case _ =>
     }
   }
@@ -335,19 +331,5 @@ object SfCodeGen extends App {
     val localisedOutputDir = outputDir.replace('\\', File.separatorChar)
     val subDir = packageName.replace('.', File.separatorChar)
     localisedOutputDir + (if (!outputDir.endsWith(File.pathSeparator)) File.separator else "") + subDir
-  }
-
-  //  SfCodeGenerator.generate(args(1), args(2))
-
-
-  def usage(): Unit = {
-    println(
-      """Usage:  SfCodeGen filename outputdir fieldspackage messagesPackage
-        |   where filename        : full path to quickfix4j fix xml defn
-        |         outputdir       : The base directory to generate the classes
-        |         fieldspackage   : the package to generate the field classes in
-        |         messagespackage : the package to generate the messages classes in
-        |        |   e.g.  SfCodeGen /java/org.quickfixj-1.6.0/etc/FIX44.xml /all_dev/scala/sackfix/sackfixcodegen/src/generated org.sackfix org.sackfix.fix44
-      """.stripMargin)
   }
 }

@@ -3055,6 +3055,11 @@
         <field name="AllocQty" required="N"/>
         <field name="IndividualAllocID" required="N"/>
         <field name="ProcessCode" required="N"/>
+        <field name="SecondaryIndividualAllocID" required="N"/>
+        <field name="AllocMethod" required="N"/>
+        <field name="AllocCustomerCapacity" required="N"/>
+        <field name="AllocPositionEffect" required="N"/>
+        <field name="IndividualAllocType" required="N"/>
         <component name="NestedParties"/>
         <field name="NotifyBrokerOfCredit" required="N"/>
         <field name="AllocHandlInst" required="N"/>
@@ -3074,14 +3079,9 @@
         <field name="AllocInterestAtMaturity" required="N"/>
         <component name="MiscFeesGrp"/>
         <component name="ClrInstGrp"/>
+        <field name="ClearingFeeIndicator" required="N"/>
         <field name="AllocSettlInstType" required="N"/>
         <component name="SettlInstructionsData"/>
-        <field name="SecondaryIndividualAllocID" required="N"/>
-        <field name="AllocMethod" required="N"/>
-        <field name="AllocCustomerCapacity" required="N"/>
-        <field name="IndividualAllocType" required="N"/>
-        <field name="AllocPositionEffect" required="N"/>
-        <field name="ClearingFeeIndicator" required="N"/>
       </group>
     </component>
     <component name="BidCompReqGrp">
@@ -4136,7 +4136,10 @@
       </group>
     </component>
     <component name="LegSecAltIDGrp">
-      <field name="NoLegSecurityAltID" required="N"/>
+      <group name="NoLegSecurityAltID" required="N">
+        <field name="LegSecurityAltID" required="N"/>
+        <field name="LegSecurityAltIDSource" required="N"/>
+      </group>
     </component>
     <component name="UndSecAltIDGrp">
       <group name="NoUnderlyingSecurityAltID" required="N">
@@ -4544,7 +4547,7 @@
       <value enum="H" description="HIGH"/>
     </field>
     <field number="26" name="IOIRefID" type="STRING"/>
-    <field number="27" name="IOIQty" type="STRING">
+    <field number="27" name="IOIQty" type="STRING" allowOtherValues="true">
       <value enum="0" description="_1000000000"/>
       <value enum="S" description="SMALL"/>
       <value enum="M" description="MEDIUM"/>
@@ -6738,7 +6741,7 @@
     <field number="601" name="LegSymbolSfx" type="STRING"/>
     <field number="602" name="LegSecurityID" type="STRING"/>
     <field number="603" name="LegSecurityIDSource" type="STRING"/>
-    <field number="604" name="NoLegSecurityAltID" type="STRING"/>
+    <field number="604" name="NoLegSecurityAltID" type="NUMINGROUP"/>
     <field number="605" name="LegSecurityAltID" type="STRING"/>
     <field number="606" name="LegSecurityAltIDSource" type="STRING"/>
     <field number="607" name="LegProduct" type="INT"/>

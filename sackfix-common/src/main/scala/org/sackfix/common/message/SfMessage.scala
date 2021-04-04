@@ -20,14 +20,14 @@ class SfMessage(val header: SfMessageHeader, val body: SfFixMessageBody,
                 val trailer: SfMessageTrailer = SfMessageTrailer(None, None, None),
                 val fixExtensions: List[Tuple2[Int, String]] = List.empty[Tuple2[Int, String]]) {
 
-  def fixStr = {
+  def fixStr: String = {
     val newBodyStr = new StringBuilder(body.fixStr).append(renderFixExtensions(SfFixField.SOH_STR))
     val interim = new StringBuilder().append(header.fixStr(newBodyStr)).append(newBodyStr)
 
     interim.append(trailer.fixStr(interim)).toString
   }
 
-  override def toString = {
+  override def toString: String = {
     // recalculate checksum and body length by generating the fix str
     fixStr
 

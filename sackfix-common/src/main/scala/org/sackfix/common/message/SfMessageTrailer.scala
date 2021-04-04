@@ -14,11 +14,11 @@ import scala.collection.immutable.HashSet
   * You can leave it as None on outgoing, as when you call fixStr(headerAndBody) the
   * checksum will be recalculated.
   */
-case class SfMessageTrailer(val signatureLengthField: Option[SignatureLengthField] = None,
-                            val signatureField: Option[SignatureField] = None,
-                            val checkSumField: Option[CheckSumField] = None) {
+case class SfMessageTrailer( signatureLengthField: Option[SignatureLengthField] = None,
+                             signatureField: Option[SignatureField] = None,
+                             checkSumField: Option[CheckSumField] = None) {
 
-  var lastChecksumFld = checkSumField.getOrElse(new CheckSumField("000"))
+  var lastChecksumFld: CheckSumField = checkSumField.getOrElse(new CheckSumField("000"))
 
   def fixStr: String = {val b = new StringBuilder()
     if (signatureLengthField.isDefined) signatureLengthField.foreach(f=>b.append(f.fixStr))
@@ -47,20 +47,20 @@ case class SfMessageTrailer(val signatureLengthField: Option[SignatureLengthFiel
 }
 
 object SfMessageTrailer extends SfFixDecoder {
-  lazy val MandatoryFields = HashSet[Int](CheckSumField.TagId)
+  lazy val MandatoryFields: HashSet[Int] = HashSet[Int](CheckSumField.TagId)
 
-  lazy val OptionalFields = HashSet[Int](SignatureLengthField.TagId, SignatureField.TagId)
+  lazy val OptionalFields: HashSet[Int] = HashSet[Int](SignatureLengthField.TagId, SignatureField.TagId)
 
   override lazy val RepeatingGroupsTags = HashSet.empty[Int]
 
-  def isMandatoryField(tagId: Int) = MandatoryFields.contains(tagId)
+  def isMandatoryField(tagId: Int): Boolean = MandatoryFields.contains(tagId)
 
-  def isOptionalField(tagId: Int) = OptionalFields.contains(tagId)
+  def isOptionalField(tagId: Int): Boolean = OptionalFields.contains(tagId)
 
   def isFieldOf(tagId: Int): Boolean =
     isMandatoryField(tagId) || isOptionalField(tagId)
 
-  override def isFirstField(tagId: Int) = tagId == SignatureLengthField.TagId
+  override def isFirstField(tagId: Int): Boolean = tagId == SignatureLengthField.TagId
 
   def decode(flds: Seq[(Int, Any)], startPos: Int = 0): Option[SfMessageTrailer] = {
     val (_, myFields, nextTagPosLookup) = extractMyFieldsAndPopulatePositions(checkFirstField = false, flds, startPos)

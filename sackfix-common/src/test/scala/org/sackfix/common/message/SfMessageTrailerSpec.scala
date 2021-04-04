@@ -1,12 +1,13 @@
 package org.sackfix.common.message
 
 import org.sackfix.field.CheckSumField
-import org.scalatest.FlatSpec
+import org.scalatest.flatspec.AnyFlatSpec
+
 
 /**
   * Created by Jonathan during November 2016.
   */
-class SfMessageTrailerSpec extends FlatSpec {
+class SfMessageTrailerSpec extends AnyFlatSpec {
   behavior of "SfMessageTrailer"
 
   it should "pad checksums" in {

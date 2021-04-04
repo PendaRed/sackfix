@@ -42,7 +42,7 @@ abstract class SfFixDecoder {
 
   def isOptionalField(tagId: Int): Boolean
 
-  def isRepeatingGroupField(tagId: Int) = {
+  def isRepeatingGroupField(tagId: Int): Boolean = {
     RepeatingGroupsTags.contains(tagId)
   }
 
@@ -53,7 +53,7 @@ abstract class SfFixDecoder {
     *
     * @param tagId The tag ot check
     */
-  def isFieldOfMine(tagId: Int) = MandatoryFields.contains(tagId) || OptionalFields.contains(tagId)
+  def isFieldOfMine(tagId: Int): Boolean = MandatoryFields.contains(tagId) || OptionalFields.contains(tagId)
 
   /**
     * Messages and components are not terminated by a 'first field' delimeter, but groups are
@@ -72,7 +72,7 @@ abstract class SfFixDecoder {
 
     @tailrec
     def stepThruFields(pos:Int): Unit = {
-      if (pos>=flds.size) Unit
+      if (pos>=flds.size) ()
       else {
         if (isFieldOfMine(flds(pos)._1)) {
           val tagId = flds(pos)._1

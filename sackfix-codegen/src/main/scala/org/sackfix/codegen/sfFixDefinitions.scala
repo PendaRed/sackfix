@@ -19,7 +19,7 @@ class FixNodeDef(val name:String, val generatedClassName:String) {
     subElements += subElement
   }
 
-  override def toString =  name
+  override def toString: String =  name
 }
 class FixOptionalFieldDef(name:String, val required:Boolean, generatedClassName:String) extends FixNodeDef(name, generatedClassName) {
   override def toString =  s"$name req=($required)"
@@ -45,7 +45,7 @@ class FixComponentDef(name:String, required:Boolean) extends FixOptionalFieldDef
   *   <component name="Instrument"/>
   */
 class FixComponentDetail(name:String) extends FixNodeDef(name,SfCodeGeneratorMessage.getComponentClassName(name)) {
-  override def toString =  {
+  override def toString: String =  {
     s"Component $name [${subElements.mkString(",")}]"
   }
 }
@@ -58,7 +58,7 @@ class FixComponentDetail(name:String) extends FixNodeDef(name,SfCodeGeneratorMes
   *   </field>
   */
 class FixValueDetail(val enumValue:String, val desc:String) extends FixNodeDef(enumValue, "") {
-  override def toString =  {
+  override def toString: String =  {
     s"Value $enumValue $desc"
   }
 }
@@ -67,9 +67,9 @@ class FixFieldDetail(val number:String, name:String, val fieldType:String, val a
   def getEnumDescription(enumVal:String):String = {
     val description = subElements.filter(_.isInstanceOf[FixValueDetail]).
       map(_.asInstanceOf[FixValueDetail]).filter(_.enumValue==enumVal).map( _.desc).mkString(",")
-    enumVal+ ( if (description.length>0) " = "+description else "")
+    enumVal+ ( if (description.nonEmpty) " = "+description else "")
   }
-  override def toString =  {
+  override def toString: String =  {
     s"Field $number $name $fieldType [${subElements.mkString(",")}]"
   }
 }
@@ -78,7 +78,7 @@ class FixFieldDetail(val number:String, name:String, val fieldType:String, val a
   * <message name="Heartbeat" msgtype="0" msgcat="admin">
   */
 class FixMessageDef( name:String, val msgType:String, val msgCat:String) extends FixNodeDef(name, SfCodeGeneratorMessage.getMessageClassName(name)) {
-  override def toString = {
+  override def toString: String = {
     s"$name msgType=$msgType msgCat=$msgCat [${subElements.mkString(",")}]"
   }
 }

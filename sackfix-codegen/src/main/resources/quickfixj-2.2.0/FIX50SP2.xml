@@ -183,6 +183,7 @@
       <field name="NetMoney" required="N"/>
       <field name="SettlCurrAmt" required="N"/>
       <field name="SettlCurrency" required="N"/>
+      <component name="RateSource" required="N"/>
       <field name="SettlCurrFxRate" required="N"/>
       <field name="SettlCurrFxRateCalc" required="N"/>
       <field name="HandlInst" required="N"/>
@@ -253,11 +254,14 @@
     </message>
     <message name="DerivativeSecurityList" msgtype="AA" msgcat="app">
       <component name="ApplicationSequenceControl" required="N"/>
+      <field name="SecurityReportID" required="N"/>
       <field name="SecurityReqID" required="N"/>
-      <field name="SecurityResponseID" required="Y"/>
+      <field name="SecurityResponseID" required="N"/>
       <field name="SecurityRequestResult" required="N"/>
+      <field name="ClearingBusinessDate" required="N"/>
       <component name="UnderlyingInstrument" required="N"/>
       <component name="DerivativeSecurityDefinition" required="N"/>
+      <field name="TransactTime" required="N"/>
       <field name="TotNoRelatedSym" required="N"/>
       <field name="LastFragment" required="N"/>
       <component name="RelSymDerivSecGrp" required="N"/>
@@ -512,7 +516,6 @@
       <field name="TradeLinkID" required="N"/>
       <field name="TrdMatchID" required="N"/>
       <field name="ExecID" required="N"/>
-      <field name="OrdStatus" required="N"/>
       <field name="SecondaryExecID" required="N"/>
       <field name="ExecRestatementReason" required="N"/>
       <field name="PreviouslyReported" required="N"/>
@@ -521,9 +524,11 @@
       <field name="AsOfIndicator" required="N"/>
       <field name="SettlSessID" required="N"/>
       <field name="SettlSessSubID" required="N"/>
+      <field name="VenueType" required="N"/>
+      <field name="MarketSegmentID" required="N"/>
+      <field name="MarketID" required="N"/>
       <component name="Instrument" required="Y"/>
       <component name="FinancingDetails" required="N"/>
-      <component name="OrderQtyData" required="N"/>
       <field name="QtyType" required="N"/>
       <component name="YieldData" required="N"/>
       <component name="UndInstrmtGrp" required="N"/>
@@ -555,7 +560,6 @@
       <field name="UnderlyingSettlementDate" required="N"/>
       <field name="MatchStatus" required="N"/>
       <field name="MatchType" required="N"/>
-      <field name="OrderCategory" required="N"/>
       <component name="TrdCapRptSideGrp" required="Y"/>
       <field name="Volatility" required="N"/>
       <field name="DividendYield" required="N"/>
@@ -580,6 +584,7 @@
       <field name="MassStatusReqID" required="Y"/>
       <field name="MassStatusReqType" required="Y"/>
       <component name="Parties" required="N"/>
+      <component name="TargetParties" required="N"/>
       <field name="Account" required="N"/>
       <field name="AcctIDSource" required="N"/>
       <field name="TradingSessionID" required="N"/>
@@ -617,9 +622,10 @@
       <field name="QuoteType" required="N"/>
       <field name="QuoteCancelType" required="N"/>
       <component name="Parties" required="N"/>
+      <component name="TargetParties" required="N"/>
       <field name="TradingSessionID" required="N"/>
       <field name="TradingSessionSubID" required="N"/>
-      <component name="Instrument" required="Y"/>
+      <component name="Instrument" required="N"/>
       <component name="FinancingDetails" required="N"/>
       <component name="UndInstrmtGrp" required="N"/>
       <field name="Side" required="N"/>
@@ -670,6 +676,9 @@
       <field name="CustOrderCapacity" required="N"/>
       <field name="ExDestination" required="N"/>
       <field name="ExDestinationIDSource" required="N"/>
+      <field name="BookingType" required="N"/>
+      <field name="OrderCapacity" required="N"/>
+      <field name="OrderRestrictions" required="N"/>
       <field name="QuoteStatus" required="N"/>
       <field name="QuoteRejectReason" required="N"/>
       <field name="Text" required="N"/>
@@ -764,8 +773,8 @@
       <component name="Instrument" required="Y"/>
       <component name="InstrumentExtension" required="N"/>
       <component name="FinancingDetails" required="N"/>
-      <component name="UndInstrmtGrp" required="Y"/>
-      <component name="InstrmtLegGrp" required="Y"/>
+      <component name="UndInstrmtGrp" required="N"/>
+      <component name="InstrmtLegGrp" required="N"/>
       <component name="YieldData" required="N"/>
       <field name="AllocQty" required="Y"/>
       <field name="QtyType" required="N"/>
@@ -958,6 +967,8 @@
       <component name="PositionAmountData" required="N"/>
       <field name="RegistStatus" required="N"/>
       <field name="DeliveryDate" required="N"/>
+      <field name="ModelType" required="N"/>
+      <field name="PriceDelta" required="N"/>
       <field name="Text" required="N"/>
       <field name="EncodedTextLen" required="N"/>
       <field name="EncodedText" required="N"/>
@@ -973,7 +984,7 @@
       <field name="TotNumTradeReports" required="N"/>
       <field name="TradeRequestResult" required="Y"/>
       <field name="TradeRequestStatus" required="Y"/>
-      <component name="Instrument" required="Y"/>
+      <component name="Instrument" required="N"/>
       <component name="UndInstrmtGrp" required="N"/>
       <component name="InstrmtLegGrp" required="N"/>
       <field name="MultiLegReportingType" required="N"/>
@@ -1013,7 +1024,6 @@
       <field name="TrdMatchID" required="N"/>
       <field name="ExecID" required="N"/>
       <field name="SecondaryExecID" required="N"/>
-      <field name="OrdStatus" required="N"/>
       <field name="ExecRestatementReason" required="N"/>
       <field name="PreviouslyReported" required="N"/>
       <field name="PriceType" required="N"/>
@@ -1024,6 +1034,9 @@
       <field name="QtyType" required="N"/>
       <field name="LastQty" required="N"/>
       <field name="LastPx" required="N"/>
+      <field name="VenueType" required="N"/>
+      <field name="MarketSegmentID" required="N"/>
+      <field name="MarketID" required="N"/>
       <component name="Instrument" required="Y"/>
       <field name="LastParPx" required="N"/>
       <field name="CalculatedCcyLastQty" required="N"/>
@@ -1148,10 +1161,11 @@
       <field name="TotNoAllocs" required="N"/>
       <field name="LastFragment" required="N"/>
       <component name="AllocGrp" required="N"/>
+      <component name="RateSource" required="N"/>
     </message>
     <message name="AllocationReportAck" msgtype="AT" msgcat="app">
       <field name="AllocReportID" required="Y"/>
-      <field name="AllocID" required="Y"/>
+      <field name="AllocID" required="N"/>
       <field name="ClearingBusinessDate" required="N"/>
       <field name="AvgPxIndicator" required="N"/>
       <field name="Quantity" required="N"/>
@@ -1204,6 +1218,7 @@
     <message name="AssignmentReport" msgtype="AW" msgcat="app">
       <component name="ApplicationSequenceControl" required="N"/>
       <field name="AsgnRptID" required="Y"/>
+      <field name="PosReqID" required="N"/>
       <field name="TotNumAssignmentReports" required="N"/>
       <field name="LastRptRequested" required="N"/>
       <component name="Parties" required="Y"/>
@@ -1375,12 +1390,18 @@
     </message>
     <message name="News" msgtype="B" msgcat="app">
       <component name="ApplicationSequenceControl" required="N"/>
+      <field name="NewsID" required="N"/>
+      <component name="NewsRefGrp" required="N"/>
+      <field name="NewsCategory" required="N"/>
+      <field name="LanguageCode" required="N"/>
       <field name="OrigTime" required="N"/>
       <field name="Urgency" required="N"/>
       <field name="Headline" required="Y"/>
       <field name="EncodedHeadlineLen" required="N"/>
       <field name="EncodedHeadline" required="N"/>
       <component name="RoutingGrp" required="N"/>
+      <field name="MarketID" required="N"/>
+      <field name="MarketSegmentID" required="N"/>
       <component name="InstrmtGrp" required="N"/>
       <component name="InstrmtLegGrp" required="N"/>
       <component name="UndInstrmtGrp" required="N"/>
@@ -1440,7 +1461,7 @@
       <field name="EncodedText" required="N"/>
     </message>
     <message name="CollateralInquiry" msgtype="BB" msgcat="app">
-      <field name="CollInquiryID" required="N"/>
+      <field name="CollInquiryID" required="Y"/>
       <component name="CollInqQualGrp" required="N"/>
       <field name="SubscriptionRequestType" required="N"/>
       <field name="ResponseTransportType" required="N"/>
@@ -1585,6 +1606,13 @@
     <message name="SecurityListUpdateReport" msgtype="BK" msgcat="app">
       <component name="ApplicationSequenceControl" required="N"/>
       <field name="SecurityReportID" required="N"/>
+      <field name="SecurityListID" required="N"/>
+      <field name="SecurityListRefID" required="N"/>
+      <field name="SecurityListDesc" required="N"/>
+      <field name="EncodedSecurityListDescLen" required="N"/>
+      <field name="EncodedSecurityListDesc" required="N"/>
+      <field name="SecurityListType" required="N"/>
+      <field name="SecurityListTypeSource" required="N"/>
       <field name="SecurityReqID" required="N"/>
       <field name="SecurityResponseID" required="N"/>
       <field name="SecurityRequestResult" required="N"/>
@@ -1594,6 +1622,7 @@
       <field name="CorporateAction" required="N"/>
       <field name="MarketID" required="N"/>
       <field name="MarketSegmentID" required="N"/>
+      <field name="TransactTime" required="N"/>
       <field name="LastFragment" required="N"/>
       <component name="SecLstUpdRelSymGrp" required="N"/>
     </message>
@@ -1742,6 +1771,7 @@
       <component name="SpreadOrBenchmarkCurveData" required="N"/>
       <component name="YieldData" required="N"/>
       <component name="MarketSegmentGrp" required="N"/>
+      <field name="TransactTime" required="N"/>
     </message>
     <message name="SettlementObligationReport" msgtype="BQ" msgcat="app">
       <component name="ApplicationSequenceControl" required="N"/>
@@ -1763,6 +1793,7 @@
       <field name="SecurityUpdateAction" required="N"/>
       <component name="UnderlyingInstrument" required="N"/>
       <component name="DerivativeSecurityDefinition" required="N"/>
+      <field name="TransactTime" required="N"/>
       <field name="TotNoRelatedSym" required="N"/>
       <field name="LastFragment" required="N"/>
       <component name="RelSymDerivSecUpdGrp" required="N"/>
@@ -1770,7 +1801,6 @@
     <message name="TradingSessionListUpdateReport" msgtype="BS" msgcat="app">
       <component name="ApplicationSequenceControl" required="N"/>
       <field name="TradSesReqID" required="N"/>
-      <field name="TradSesUpdateAction" required="N"/>
       <component name="TrdSessLstGrp" required="Y"/>
     </message>
     <message name="MarketDefinitionRequest" msgtype="BT" msgcat="app">
@@ -1825,6 +1855,7 @@
       <field name="ApplReqID" required="Y"/>
       <field name="ApplReqType" required="Y"/>
       <component name="ApplIDRequestGrp" required="N"/>
+      <component name="Parties" required="N"/>
       <field name="Text" required="N"/>
       <field name="EncodedTextLen" required="N"/>
       <field name="EncodedText" required="N"/>
@@ -1836,12 +1867,14 @@
       <field name="ApplResponseType" required="N"/>
       <field name="ApplTotalMessageCount" required="N"/>
       <component name="ApplIDRequestAckGrp" required="N"/>
+      <component name="Parties" required="N"/>
       <field name="Text" required="N"/>
       <field name="EncodedTextLen" required="N"/>
       <field name="EncodedText" required="N"/>
     </message>
     <message name="ApplicationMessageReport" msgtype="BY" msgcat="app">
       <field name="ApplReportID" required="Y"/>
+      <field name="ApplReqID" required="N"/>
       <field name="ApplReportType" required="Y"/>
       <component name="ApplIDReportGrp" required="N"/>
       <field name="Text" required="N"/>
@@ -1864,6 +1897,7 @@
       <field name="TradingSessionID" required="N"/>
       <field name="TradingSessionSubID" required="N"/>
       <component name="Parties" required="N"/>
+      <component name="TargetParties" required="N"/>
       <component name="Instrument" required="N"/>
       <component name="UnderlyingInstrument" required="N"/>
       <field name="Side" required="N"/>
@@ -1899,6 +1933,7 @@
       <field name="TradingSessionID" required="N"/>
       <field name="TradingSessionSubID" required="N"/>
       <component name="Parties" required="N"/>
+      <component name="TargetParties" required="N"/>
       <component name="Instrument" required="N"/>
       <component name="UnderlyingInstrument" required="N"/>
       <field name="Side" required="N"/>
@@ -1910,6 +1945,25 @@
     <message name="UserNotification" msgtype="CB" msgcat="app">
       <component name="UsernameGrp" required="N"/>
       <field name="UserStatus" required="Y"/>
+      <field name="Text" required="N"/>
+      <field name="EncodedTextLen" required="N"/>
+      <field name="EncodedText" required="N"/>
+    </message>
+    <message name="StreamAssignmentRequest" msgtype="CC" msgcat="app">
+      <field name="StreamAsgnReqID" required="Y"/>
+      <field name="StreamAsgnReqType" required="Y"/>
+      <component name="StrmAsgnReqGrp" required="Y"/>
+    </message>
+    <message name="StreamAssignmentReport" msgtype="CD" msgcat="app">
+      <field name="StreamAsgnRptID" required="Y"/>
+      <field name="StreamAsgnReqType" required="N"/>
+      <field name="StreamAsgnReqID" required="N"/>
+      <component name="StrmAsgnRptGrp" required="N"/>
+    </message>
+    <message name="StreamAssignmentReportACK" msgtype="CE" msgcat="app">
+      <field name="StreamAsgnAckType" required="Y"/>
+      <field name="StreamAsgnRptID" required="Y"/>
+      <field name="StreamAsgnRejReason" required="N"/>
       <field name="Text" required="N"/>
       <field name="EncodedTextLen" required="N"/>
       <field name="EncodedText" required="N"/>
@@ -2233,6 +2287,7 @@
       <field name="MultiLegReportingType" required="N"/>
       <field name="MessageEventSource" required="N"/>
       <field name="RndPx" required="N"/>
+      <component name="RateSource" required="N"/>
     </message>
     <message name="ListCancelRequest" msgtype="K" msgcat="app">
       <field name="ListID" required="Y"/>
@@ -2313,7 +2368,9 @@
       <field name="QuoteReqID" required="Y"/>
       <field name="RFQReqID" required="N"/>
       <field name="ClOrdID" required="N"/>
+      <field name="BookingType" required="N"/>
       <field name="OrderCapacity" required="N"/>
+      <field name="OrderRestrictions" required="N"/>
       <field name="PrivateQuote" required="N"/>
       <field name="RespondentType" required="N"/>
       <field name="PreTradeAnonymity" required="N"/>
@@ -2345,6 +2402,8 @@
       <field name="SettlDate2" required="N"/>
       <field name="OrderQty2" required="N"/>
       <field name="Currency" required="N"/>
+      <field name="SettlCurrency" required="N"/>
+      <component name="RateSource" required="N"/>
       <component name="Stipulations" required="N"/>
       <field name="Account" required="N"/>
       <field name="AcctIDSource" required="N"/>
@@ -2382,7 +2441,9 @@
       <field name="CustOrderCapacity" required="N"/>
       <field name="ExDestination" required="N"/>
       <field name="ExDestinationIDSource" required="N"/>
+      <field name="BookingType" required="N"/>
       <field name="OrderCapacity" required="N"/>
+      <field name="OrderRestrictions" required="N"/>
       <field name="PriceType" required="N"/>
       <component name="SpreadOrBenchmarkCurveData" required="N"/>
       <component name="YieldData" required="N"/>
@@ -2431,6 +2492,7 @@
       <field name="RefreshIndicator" required="N"/>
       <field name="TradeDate" required="N"/>
       <field name="MDReqID" required="N"/>
+      <field name="MDStreamID" required="N"/>
       <component name="Instrument" required="Y"/>
       <component name="UndInstrmtGrp" required="N"/>
       <component name="InstrmtLegGrp" required="N"/>
@@ -2467,8 +2529,10 @@
       <field name="QuoteID" required="N"/>
       <field name="QuoteMsgID" required="N"/>
       <field name="QuoteCancelType" required="Y"/>
+      <field name="QuoteType" required="N"/>
       <field name="QuoteResponseLevel" required="N"/>
       <component name="Parties" required="N"/>
+      <component name="TargetParties" required="N"/>
       <field name="Account" required="N"/>
       <field name="AcctIDSource" required="N"/>
       <field name="AccountType" required="N"/>
@@ -2479,11 +2543,12 @@
     <message name="QuoteStatusRequest" msgtype="a" msgcat="app">
       <field name="QuoteStatusReqID" required="N"/>
       <field name="QuoteID" required="N"/>
-      <component name="Instrument" required="Y"/>
+      <component name="Instrument" required="N"/>
       <component name="FinancingDetails" required="N"/>
       <component name="UndInstrmtGrp" required="N"/>
       <component name="InstrmtLegGrp" required="N"/>
       <component name="Parties" required="N"/>
+      <component name="TargetParties" required="N"/>
       <field name="Account" required="N"/>
       <field name="AcctIDSource" required="N"/>
       <field name="AccountType" required="N"/>
@@ -2500,6 +2565,7 @@
       <field name="QuoteType" required="N"/>
       <field name="QuoteCancelType" required="N"/>
       <component name="Parties" required="N"/>
+      <component name="TargetParties" required="N"/>
       <field name="Account" required="N"/>
       <field name="AcctIDSource" required="N"/>
       <field name="AccountType" required="N"/>
@@ -2549,6 +2615,7 @@
       <component name="SpreadOrBenchmarkCurveData" required="N"/>
       <component name="YieldData" required="N"/>
       <component name="MarketSegmentGrp" required="N"/>
+      <field name="TransactTime" required="N"/>
     </message>
     <message name="SecurityStatusRequest" msgtype="e" msgcat="app">
       <field name="SecurityStatusReqID" required="Y"/>
@@ -2732,6 +2799,7 @@
       <field name="TradingSessionID" required="N"/>
       <field name="TradingSessionSubID" required="N"/>
       <component name="Parties" required="N"/>
+      <component name="TargetParties" required="N"/>
       <component name="Instrument" required="N"/>
       <component name="UnderlyingInstrument" required="N"/>
       <field name="MarketID" required="N"/>
@@ -2757,6 +2825,7 @@
       <field name="TradingSessionID" required="N"/>
       <field name="TradingSessionSubID" required="N"/>
       <component name="Parties" required="N"/>
+      <component name="TargetParties" required="N"/>
       <component name="Instrument" required="N"/>
       <component name="UnderlyingInstrument" required="N"/>
       <field name="MarketID" required="N"/>
@@ -2929,6 +2998,9 @@
     <message name="SecurityListRequest" msgtype="x" msgcat="app">
       <field name="SecurityReqID" required="Y"/>
       <field name="SecurityListRequestType" required="Y"/>
+      <field name="SecurityListID" required="N"/>
+      <field name="SecurityListType" required="N"/>
+      <field name="SecurityListTypeSource" required="N"/>
       <field name="MarketID" required="N"/>
       <field name="MarketSegmentID" required="N"/>
       <component name="Instrument" required="N"/>
@@ -2948,9 +3020,17 @@
       <component name="ApplicationSequenceControl" required="N"/>
       <field name="SecurityReportID" required="N"/>
       <field name="ClearingBusinessDate" required="N"/>
+      <field name="SecurityListID" required="N"/>
+      <field name="SecurityListRefID" required="N"/>
+      <field name="SecurityListDesc" required="N"/>
+      <field name="EncodedSecurityListDescLen" required="N"/>
+      <field name="EncodedSecurityListDesc" required="N"/>
+      <field name="SecurityListType" required="N"/>
+      <field name="SecurityListTypeSource" required="N"/>
       <field name="SecurityReqID" required="N"/>
       <field name="SecurityResponseID" required="N"/>
       <field name="SecurityRequestResult" required="N"/>
+      <field name="TransactTime" required="N"/>
       <field name="TotNoRelatedSym" required="N"/>
       <field name="MarketID" required="N"/>
       <field name="MarketSegmentID" required="N"/>
@@ -2985,6 +3065,8 @@
         <component name="SpreadOrBenchmarkCurveData" required="N"/>
         <field name="OrdType" required="N"/>
         <field name="Currency" required="N"/>
+        <field name="SettlCurrency" required="N"/>
+        <component name="RateSource" required="N"/>
         <field name="MDEntrySize" required="N"/>
         <component name="SecSizesGrp" required="N"/>
         <field name="LotType" required="N"/>
@@ -3017,6 +3099,7 @@
         <field name="MDEntryPositionNo" required="N"/>
         <field name="Scope" required="N"/>
         <field name="PriceDelta" required="N"/>
+        <field name="TrdType" required="N"/>
         <field name="Text" required="N"/>
         <field name="EncodedTextLen" required="N"/>
         <field name="EncodedText" required="N"/>
@@ -3025,6 +3108,8 @@
         <field name="MDOriginType" required="N"/>
         <field name="HighPx" required="N"/>
         <field name="LowPx" required="N"/>
+        <field name="FirstPx" required="N"/>
+        <field name="LastPx" required="N"/>
         <field name="TradeVolume" required="N"/>
         <field name="SettlType" required="N"/>
         <field name="SettlDate" required="N"/>
@@ -3099,18 +3184,18 @@
         <component name="UnderlyingLegInstrument" required="N"/>
       </group>
     </component>
+    <component name="SettlDetails">
+      <group name="NoSettlDetails" required="N">
+        <field name="SettlObligSource" required="N"/>
+        <component name="SettlParties" required="N"/>
+      </group>
+    </component>
     <component name="RootParties">
       <group name="NoRootPartyIDs" required="N">
         <field name="RootPartyID" required="N"/>
         <field name="RootPartyIDSource" required="N"/>
         <field name="RootPartyRole" required="N"/>
         <component name="RootSubParties" required="N"/>
-      </group>
-    </component>
-    <component name="SettlDetails">
-      <group name="NoSettlDetails" required="N">
-        <field name="SettlObligSource" required="N"/>
-        <component name="SettlParties" required="N"/>
       </group>
     </component>
     <component name="UsernameGrp">
@@ -3127,6 +3212,7 @@
         <component name="SecondaryPriceLimits" required="N"/>
         <field name="Currency" required="N"/>
         <component name="InstrmtLegGrp" required="N"/>
+        <field name="RelSymTransactTime" required="N"/>
         <field name="Text" required="N"/>
         <field name="EncodedTextLen" required="N"/>
         <field name="EncodedText" required="N"/>
@@ -3143,15 +3229,35 @@
         <field name="RootPartySubIDType" required="N"/>
       </group>
     </component>
-    <component name="TimeInForceRules">
-      <group name="NoTimeInForceRules" required="N">
-        <field name="TimeInForce" required="N"/>
+    <component name="StrmAsgnRptInstrmtGrp">
+      <group name="NoRelatedSym" required="N">
+        <component name="Instrument" required="N"/>
+        <field name="SettlType" required="N"/>
+        <field name="StreamAsgnType" required="N"/>
+        <field name="MDStreamID" required="N"/>
+        <field name="StreamAsgnRejReason" required="N"/>
+        <field name="Text" required="N"/>
+        <field name="EncodedTextLen" required="N"/>
+        <field name="EncodedText" required="N"/>
+      </group>
+    </component>
+    <component name="StrmAsgnReqInstrmtGrp">
+      <group name="NoRelatedSym" required="N">
+        <component name="Instrument" required="N"/>
+        <field name="SettlType" required="N"/>
+        <field name="MDEntrySize" required="N"/>
+        <field name="MDStreamID" required="N"/>
       </group>
     </component>
     <component name="TrdRepIndicatorsGrp">
       <group name="NoTrdRepIndicators" required="N">
         <field name="TrdRepPartyRole" required="N"/>
         <field name="TrdRepIndicator" required="N"/>
+      </group>
+    </component>
+    <component name="TimeInForceRules">
+      <group name="NoTimeInForceRules" required="N">
+        <field name="TimeInForce" required="N"/>
       </group>
     </component>
     <component name="AllocGrp">
@@ -3197,7 +3303,15 @@
         <field name="FillExecID" required="N"/>
         <field name="FillPx" required="N"/>
         <field name="FillQty" required="N"/>
+        <field name="FillLiquidityInd" required="N"/>
         <component name="NestedParties4" required="N"/>
+      </group>
+    </component>
+    <component name="TargetParties">
+      <group name="NoTargetPartyIDs" required="N">
+        <field name="TargetPartyID" required="N"/>
+        <field name="TargetPartyIDSource" required="N"/>
+        <field name="TargetPartyRole" required="N"/>
       </group>
     </component>
     <component name="ExecInstRules">
@@ -3263,8 +3377,10 @@
     <component name="ApplIDRequestGrp">
       <group name="NoApplIDs" required="N">
         <field name="RefApplID" required="N"/>
+        <field name="RefApplReqID" required="N"/>
         <field name="ApplBegSeqNum" required="N"/>
         <field name="ApplEndSeqNum" required="N"/>
+        <component name="NestedParties" required="N"/>
       </group>
     </component>
     <component name="TradingSessionRulesGrp">
@@ -3294,6 +3410,7 @@
         <component name="SecLstUpdRelSymsLegGrp" required="N"/>
         <component name="SpreadOrBenchmarkCurveData" required="N"/>
         <component name="YieldData" required="N"/>
+        <field name="RelSymTransactTime" required="N"/>
         <field name="Text" required="N"/>
         <field name="EncodedTextLen" required="N"/>
         <field name="EncodedText" required="N"/>
@@ -3364,6 +3481,7 @@
         <field name="CorporateAction" required="N"/>
         <component name="InstrumentExtension" required="N"/>
         <component name="InstrmtLegGrp" required="N"/>
+        <field name="RelSymTransactTime" required="N"/>
         <field name="Text" required="N"/>
         <field name="EncodedTextLen" required="N"/>
         <field name="EncodedText" required="N"/>
@@ -3380,6 +3498,12 @@
         <field name="SettlDate" required="N"/>
         <field name="Account" required="N"/>
         <field name="AcctIDSource" required="N"/>
+      </group>
+    </component>
+    <component name="StrmAsgnRptGrp">
+      <group name="NoAsgnReqs" required="N">
+        <component name="Parties" required="N"/>
+        <component name="StrmAsgnRptInstrmtGrp" required="N"/>
       </group>
     </component>
     <component name="QuotCxlEntriesGrp">
@@ -3491,6 +3615,7 @@
         <component name="InstrmtLegSecListGrp" required="N"/>
         <component name="SpreadOrBenchmarkCurveData" required="N"/>
         <component name="YieldData" required="N"/>
+        <field name="RelSymTransactTime" required="N"/>
         <field name="Text" required="N"/>
         <field name="EncodedTextLen" required="N"/>
         <field name="EncodedText" required="N"/>
@@ -3526,6 +3651,8 @@
       <field name="DerivativeStrikeValue" required="N"/>
       <field name="DerivativeOptAttribute" required="N"/>
       <field name="DerivativeContractMultiplier" required="N"/>
+      <field name="DerivativeContractMultiplierUnit" required="N"/>
+      <field name="DerivativeFlowScheduleType" required="N"/>
       <field name="DerivativeMinPriceIncrement" required="N"/>
       <field name="DerivativeMinPriceIncrementAmount" required="N"/>
       <field name="DerivativeUnitOfMeasure" required="N"/>
@@ -3534,7 +3661,7 @@
       <field name="DerivativePriceUnitOfMeasureQty" required="N"/>
       <field name="DerivativeSettlMethod" required="N"/>
       <field name="DerivativePriceQuoteMethod" required="N"/>
-      <field name="DerivativeFuturesValuationMethod" required="N"/>
+      <field name="DerivativeValuationMethod" required="N"/>
       <field name="DerivativeListMethod" required="N"/>
       <field name="DerivativeCapPrice" required="N"/>
       <field name="DerivativeFloorPrice" required="N"/>
@@ -3604,6 +3731,7 @@
       <group name="NoTradingSessions" required="Y">
         <field name="TradingSessionID" required="Y"/>
         <field name="TradingSessionSubID" required="N"/>
+        <field name="TradSesUpdateAction" required="N"/>
         <field name="SecurityExchange" required="N"/>
         <field name="MarketID" required="N"/>
         <field name="MarketSegmentID" required="N"/>
@@ -3620,6 +3748,7 @@
         <field name="TradSesEndTime" required="N"/>
         <field name="TotalVolumeTraded" required="N"/>
         <component name="TradingSessionRules" required="N"/>
+        <field name="TransactTime" required="N"/>
         <field name="Text" required="N"/>
         <field name="EncodedTextLen" required="N"/>
         <field name="EncodedText" required="N"/>
@@ -3634,8 +3763,8 @@
     </component>
     <component name="UndlyInstrumentPtysSubGrp">
       <group name="NoUndlyInstrumentPartySubIDs" required="N">
-        <field name="UndlyInstrumentPartySubID" required="N"/>
-        <field name="UndlyInstrumentPartySubIDType" required="N"/>
+        <field name="UnderlyingInstrumentPartySubID" required="N"/>
+        <field name="UnderlyingInstrumentPartySubIDType" required="N"/>
       </group>
     </component>
     <component name="BidDescReqGrp">
@@ -3651,6 +3780,12 @@
         <field name="FairValue" required="N"/>
         <field name="OutsideIndexPct" required="N"/>
         <field name="ValueOfFutures" required="N"/>
+      </group>
+    </component>
+    <component name="StrmAsgnReqGrp">
+      <group name="NoAsgnReqs" required="N">
+        <component name="Parties" required="N"/>
+        <component name="StrmAsgnReqInstrmtGrp" required="N"/>
       </group>
     </component>
     <component name="LotTypeRules">
@@ -3688,6 +3823,35 @@
       <field name="PctAtRisk" required="N"/>
       <component name="AttrbGrp" required="N"/>
     </component>
+    <component name="TradeReportOrderDetail">
+      <field name="OrderID" required="N"/>
+      <field name="SecondaryOrderID" required="N"/>
+      <field name="ClOrdID" required="N"/>
+      <field name="SecondaryClOrdID" required="N"/>
+      <field name="ListID" required="N"/>
+      <field name="RefOrderID" required="N"/>
+      <field name="RefOrderIDSource" required="N"/>
+      <field name="RefOrdIDReason" required="N"/>
+      <field name="OrdType" required="N"/>
+      <field name="Price" required="N"/>
+      <field name="StopPx" required="N"/>
+      <field name="ExecInst" required="N"/>
+      <field name="OrdStatus" required="N"/>
+      <component name="OrderQtyData" required="N"/>
+      <field name="LeavesQty" required="N"/>
+      <field name="CumQty" required="N"/>
+      <field name="TimeInForce" required="N"/>
+      <field name="ExpireTime" required="N"/>
+      <component name="DisplayInstruction" required="N"/>
+      <field name="OrderCapacity" required="N"/>
+      <field name="OrderRestrictions" required="N"/>
+      <field name="BookingType" required="N"/>
+      <field name="OrigCustOrderCapacity" required="N"/>
+      <field name="OrderInputDevice" required="N"/>
+      <field name="LotType" required="N"/>
+      <field name="TransBkdTime" required="N"/>
+      <field name="OrigOrdModTime" required="N"/>
+    </component>
     <component name="UndInstrmtGrp">
       <group name="NoUnderlyings" required="N">
         <component name="UnderlyingInstrument" required="N"/>
@@ -3712,6 +3876,12 @@
       <field name="UnderlyingMaturityDate" required="N"/>
       <field name="UnderlyingMaturityTime" required="N"/>
       <field name="UnderlyingCouponPaymentDate" required="N"/>
+      <field name="UnderlyingRestructuringType" required="N"/>
+      <field name="UnderlyingSeniority" required="N"/>
+      <field name="UnderlyingNotionalPercentageOutstanding" required="N"/>
+      <field name="UnderlyingOriginalNotionalPercentageOutstanding" required="N"/>
+      <field name="UnderlyingAttachmentPoint" required="N"/>
+      <field name="UnderlyingDetachmentPoint" required="N"/>
       <field name="UnderlyingIssueDate" required="N"/>
       <field name="UnderlyingRepoCollateralSecurityType" required="N"/>
       <field name="UnderlyingRepurchaseTerm" required="N"/>
@@ -3727,6 +3897,8 @@
       <field name="UnderlyingStrikeCurrency" required="N"/>
       <field name="UnderlyingOptAttribute" required="N"/>
       <field name="UnderlyingContractMultiplier" required="N"/>
+      <field name="UnderlyingContractMultiplierUnit" required="N"/>
+      <field name="UnderlyingFlowScheduleType" required="N"/>
       <field name="UnderlyingUnitOfMeasure" required="N"/>
       <field name="UnderlyingUnitOfMeasureQty" required="N"/>
       <field name="UnderlyingPriceUnitOfMeasure" required="N"/>
@@ -3796,6 +3968,12 @@
         <field name="AllocQty" required="N"/>
       </group>
     </component>
+    <component name="ComplexEventTimes">
+      <group name="NoComplexEventTimes" required="N">
+        <field name="ComplexEventStartTime" required="N"/>
+        <field name="ComplexEventEndTime" required="N"/>
+      </group>
+    </component>
     <component name="DerivativeInstrumentAttribute">
       <group name="NoDerivativeInstrAttrib" required="N">
         <field name="DerivativeInstrAttribType" required="N"/>
@@ -3832,13 +4010,10 @@
     <component name="TrdCapRptSideGrp">
       <group name="NoSides" required="Y">
         <field name="Side" required="Y"/>
-        <field name="OrderID" required="N"/>
-        <field name="SecondaryOrderID" required="N"/>
-        <field name="ClOrdID" required="N"/>
-        <field name="ExecRefID" required="N"/>
-        <field name="SecondaryClOrdID" required="N"/>
-        <field name="ListID" required="N"/>
-        <field name="SideQty" required="N"/>
+        <field name="SideExecID" required="N"/>
+        <field name="OrderDelay" required="N"/>
+        <field name="OrderDelayUnit" required="N"/>
+        <field name="SideLastQty" required="N"/>
         <field name="SideTradeReportID" required="N"/>
         <field name="SideFillStationCd" required="N"/>
         <field name="SideReasonCd" required="N"/>
@@ -3852,20 +4027,13 @@
         <field name="AcctIDSource" required="N"/>
         <field name="AccountType" required="N"/>
         <field name="ProcessCode" required="N"/>
-        <field name="LotType" required="N"/>
         <field name="OddLot" required="N"/>
         <component name="ClrInstGrp" required="N"/>
         <field name="TradeInputSource" required="N"/>
         <field name="TradeInputDevice" required="N"/>
-        <field name="OrderInputDevice" required="N"/>
         <field name="ComplianceID" required="N"/>
         <field name="SolicitedFlag" required="N"/>
-        <field name="OrderCapacity" required="N"/>
-        <field name="OrderRestrictions" required="N"/>
         <field name="CustOrderCapacity" required="N"/>
-        <field name="OrdType" required="N"/>
-        <field name="ExecInst" required="N"/>
-        <field name="TransBkdTime" required="N"/>
         <field name="TradingSessionID" required="N"/>
         <field name="TradingSessionSubID" required="N"/>
         <field name="TimeBracket" required="N"/>
@@ -3902,6 +4070,9 @@
         <field name="SideGrossTradeAmt" required="N"/>
         <field name="AggressorIndicator" required="N"/>
         <field name="ExchangeSpecialInstructions" required="N"/>
+        <field name="OrderCategory" required="N"/>
+        <field name="SideLiquidityInd" required="N"/>
+        <component name="TradeReportOrderDetail" required="N"/>
       </group>
     </component>
     <component name="UndInstrmtCollGrp">
@@ -3924,6 +4095,13 @@
       <field name="SecondaryHighLimitPrice" required="N"/>
       <field name="SecondaryTradingReferencePrice" required="N"/>
     </component>
+    <component name="RateSource">
+      <group name="NoRateSources" required="N">
+        <field name="RateSource" required="N"/>
+        <field name="RateSourceType" required="N"/>
+        <field name="ReferencePage" required="N"/>
+      </group>
+    </component>
     <component name="ExpirationQty">
       <group name="NoExpiration" required="N">
         <field name="ExpirationQtyType" required="N"/>
@@ -3935,12 +4113,6 @@
         <field name="OrdType" required="N"/>
       </group>
     </component>
-    <component name="NstdPtys2SubGrp">
-      <group name="NoNested2PartySubIDs" required="N">
-        <field name="Nested2PartySubID" required="N"/>
-        <field name="Nested2PartySubIDType" required="N"/>
-      </group>
-    </component>
     <component name="DisplayInstruction">
       <field name="DisplayQty" required="N"/>
       <field name="SecondaryDisplayQty" required="N"/>
@@ -3950,6 +4122,12 @@
       <field name="DisplayHighQty" required="N"/>
       <field name="DisplayMinIncr" required="N"/>
       <field name="RefreshQty" required="N"/>
+    </component>
+    <component name="NstdPtys2SubGrp">
+      <group name="NoNested2PartySubIDs" required="N">
+        <field name="Nested2PartySubID" required="N"/>
+        <field name="Nested2PartySubIDType" required="N"/>
+      </group>
     </component>
     <component name="ExecAllocGrp">
       <group name="NoExecs" required="N">
@@ -3998,6 +4176,7 @@
         <field name="SettlType" required="N"/>
         <field name="SettlDate" required="N"/>
         <field name="MDEntrySize" required="N"/>
+        <field name="MDStreamID" required="N"/>
       </group>
     </component>
     <component name="QuotReqGrp">
@@ -4020,6 +4199,8 @@
         <field name="SettlDate2" required="N"/>
         <field name="OrderQty2" required="N"/>
         <field name="Currency" required="N"/>
+        <field name="SettlCurrency" required="N"/>
+        <component name="RateSource" required="N"/>
         <component name="Stipulations" required="N"/>
         <field name="Account" required="N"/>
         <field name="AcctIDSource" required="N"/>
@@ -4094,9 +4275,9 @@
     </component>
     <component name="UndlyInstrumentParties">
       <group name="NoUndlyInstrumentParties" required="N">
-        <field name="UndlyInstrumentPartyID" required="N"/>
-        <field name="UndlyInstrumentPartyIDSource" required="N"/>
-        <field name="UndlyInstrumentPartyRole" required="N"/>
+        <field name="UnderlyingInstrumentPartyID" required="N"/>
+        <field name="UnderlyingInstrumentPartyIDSource" required="N"/>
+        <field name="UnderlyingInstrumentPartyRole" required="N"/>
         <component name="UndlyInstrumentPtysSubGrp" required="N"/>
       </group>
     </component>
@@ -4138,6 +4319,18 @@
         <component name="SettlDetails" required="N"/>
       </group>
     </component>
+    <component name="ComplexEvents">
+      <group name="NoComplexEvents" required="N">
+        <field name="ComplexEventType" required="N"/>
+        <field name="ComplexOptPayoutAmount" required="N"/>
+        <field name="ComplexEventPrice" required="N"/>
+        <field name="ComplexEventPriceBoundaryMethod" required="N"/>
+        <field name="ComplexEventPriceBoundaryPrecision" required="N"/>
+        <field name="ComplexEventPriceTimeType" required="N"/>
+        <field name="ComplexEventCondition" required="N"/>
+        <component name="ComplexEventDates" required="N"/>
+      </group>
+    </component>
     <component name="UnderlyingStipulations">
       <group name="NoUnderlyingStips" required="N">
         <field name="UnderlyingStipType" required="N"/>
@@ -4150,6 +4343,7 @@
         <field name="SecuritySubType" required="N"/>
         <field name="Product" required="N"/>
         <field name="CFICode" required="N"/>
+        <field name="TransactTime" required="N"/>
       </group>
     </component>
     <component name="QuotEntryAckGrp">
@@ -4180,8 +4374,18 @@
         <field name="BidForwardPoints2" required="N"/>
         <field name="OfferForwardPoints2" required="N"/>
         <field name="Currency" required="N"/>
+        <field name="BookingType" required="N"/>
+        <field name="OrderCapacity" required="N"/>
+        <field name="OrderRestrictions" required="N"/>
         <field name="QuoteEntryStatus" required="N"/>
         <field name="QuoteEntryRejectReason" required="N"/>
+      </group>
+    </component>
+    <component name="ComplexEventDates">
+      <group name="NoComplexEventDates" required="N">
+        <field name="ComplexEventStartDate" required="N"/>
+        <field name="ComplexEventEndDate" required="N"/>
+        <component name="ComplexEventTimes" required="N"/>
       </group>
     </component>
     <component name="LegBenchmarkCurveData">
@@ -4298,6 +4502,14 @@
         <field name="TradingSessionSubID" required="N"/>
       </group>
     </component>
+    <component name="SettlParties">
+      <group name="NoSettlPartyIDs" required="N">
+        <field name="SettlPartyID" required="N"/>
+        <field name="SettlPartyIDSource" required="N"/>
+        <field name="SettlPartyRole" required="N"/>
+        <component name="SettlPtysSubGrp" required="N"/>
+      </group>
+    </component>
     <component name="InstrmtLegExecGrp">
       <group name="NoLegs" required="N">
         <component name="InstrumentLeg" required="N"/>
@@ -4329,14 +4541,6 @@
       <component name="BaseTradingRules" required="N"/>
       <component name="TradingSessionRulesGrp" required="N"/>
       <component name="NestedInstrumentAttribute" required="N"/>
-    </component>
-    <component name="SettlParties">
-      <group name="NoSettlPartyIDs" required="N">
-        <field name="SettlPartyID" required="N"/>
-        <field name="SettlPartyIDSource" required="N"/>
-        <field name="SettlPartyRole" required="N"/>
-        <component name="SettlPtysSubGrp" required="N"/>
-      </group>
     </component>
     <component name="CompIDReqGrp">
       <group name="NoCompIDs" required="N">
@@ -4436,6 +4640,7 @@
       <group name="NoQuoteSets" required="N">
         <field name="QuoteSetID" required="N"/>
         <component name="UnderlyingInstrument" required="N"/>
+        <field name="QuoteSetValidUntilTime" required="N"/>
         <field name="TotNoQuoteEntries" required="N"/>
         <field name="TotNoCxldQuotes" required="N"/>
         <field name="TotNoAccQuotes" required="N"/>
@@ -4593,16 +4798,12 @@
     <component name="ApplIDRequestAckGrp">
       <group name="NoApplIDs" required="N">
         <field name="RefApplID" required="N"/>
+        <field name="RefApplReqID" required="N"/>
         <field name="ApplBegSeqNum" required="N"/>
         <field name="ApplEndSeqNum" required="N"/>
         <field name="RefApplLastSeqNum" required="N"/>
         <field name="ApplResponseError" required="N"/>
-      </group>
-    </component>
-    <component name="NstdPtys3SubGrp">
-      <group name="NoNested3PartySubIDs" required="N">
-        <field name="Nested3PartySubID" required="N"/>
-        <field name="Nested3PartySubIDType" required="N"/>
+        <component name="NestedParties" required="N"/>
       </group>
     </component>
     <component name="LegPreAllocGrp">
@@ -4613,6 +4814,12 @@
         <field name="LegAllocQty" required="N"/>
         <field name="LegAllocAcctIDSource" required="N"/>
         <field name="LegAllocSettlCurrency" required="N"/>
+      </group>
+    </component>
+    <component name="NstdPtys3SubGrp">
+      <group name="NoNested3PartySubIDs" required="N">
+        <field name="Nested3PartySubID" required="N"/>
+        <field name="Nested3PartySubIDType" required="N"/>
       </group>
     </component>
     <component name="PriceLimits">
@@ -4709,6 +4916,9 @@
         <field name="BidForwardPoints2" required="N"/>
         <field name="OfferForwardPoints2" required="N"/>
         <field name="Currency" required="N"/>
+        <field name="BookingType" required="N"/>
+        <field name="OrderCapacity" required="N"/>
+        <field name="OrderRestrictions" required="N"/>
       </group>
     </component>
     <component name="InstrmtLegSecListGrp">
@@ -4753,30 +4963,21 @@
     <component name="TrdCapRptAckSideGrp">
       <group name="NoSides" required="Y">
         <field name="Side" required="Y"/>
-        <field name="OrderID" required="N"/>
-        <field name="SecondaryOrderID" required="N"/>
-        <field name="ClOrdID" required="N"/>
-        <field name="SecondaryClOrdID" required="N"/>
-        <field name="ListID" required="N"/>
+        <field name="SideExecID" required="N"/>
+        <field name="OrderDelay" required="N"/>
+        <field name="OrderDelayUnit" required="N"/>
         <component name="Parties" required="N"/>
         <field name="Account" required="N"/>
         <field name="AcctIDSource" required="N"/>
         <field name="AccountType" required="N"/>
         <field name="ProcessCode" required="N"/>
         <field name="OddLot" required="N"/>
-        <field name="LotType" required="N"/>
         <component name="ClrInstGrp" required="N"/>
         <field name="TradeInputSource" required="N"/>
         <field name="TradeInputDevice" required="N"/>
-        <field name="OrderInputDevice" required="N"/>
         <field name="ComplianceID" required="N"/>
         <field name="SolicitedFlag" required="N"/>
-        <field name="OrderCapacity" required="N"/>
-        <field name="OrderRestrictions" required="N"/>
         <field name="CustOrderCapacity" required="N"/>
-        <field name="OrdType" required="N"/>
-        <field name="ExecInst" required="N"/>
-        <field name="TransBkdTime" required="N"/>
         <field name="TradingSessionID" required="N"/>
         <field name="TradingSessionSubID" required="N"/>
         <field name="TimeBracket" required="N"/>
@@ -4811,12 +5012,14 @@
         <component name="TrdAllocGrp" required="N"/>
         <field name="SideGrossTradeAmt" required="N"/>
         <field name="AggressorIndicator" required="N"/>
-        <field name="SideQty" required="N"/>
+        <field name="SideLastQty" required="N"/>
         <field name="SideTradeReportID" required="N"/>
         <field name="SideFillStationCd" required="N"/>
         <field name="SideReasonCd" required="N"/>
         <field name="RptSeq" required="N"/>
         <field name="SideTrdSubTyp" required="N"/>
+        <field name="OrderCategory" required="N"/>
+        <component name="TradeReportOrderDetail" required="N"/>
         <component name="SideTrdRegTS" required="N"/>
       </group>
     </component>
@@ -4857,6 +5060,8 @@
       <field name="LegStrikeCurrency" required="N"/>
       <field name="LegOptAttribute" required="N"/>
       <field name="LegContractMultiplier" required="N"/>
+      <field name="LegContractMultiplierUnit" required="N"/>
+      <field name="LegFlowScheduleType" required="N"/>
       <field name="LegUnitOfMeasure" required="N"/>
       <field name="LegUnitOfMeasureQty" required="N"/>
       <field name="LegPriceUnitOfMeasure" required="N"/>
@@ -4962,6 +5167,7 @@
         <field name="MDEntryType" required="N"/>
         <field name="MDEntryID" required="N"/>
         <field name="MDEntryRefID" required="N"/>
+        <field name="MDStreamID" required="N"/>
         <component name="Instrument" required="N"/>
         <component name="UndInstrmtGrp" required="N"/>
         <component name="InstrmtLegGrp" required="N"/>
@@ -4973,6 +5179,8 @@
         <component name="SpreadOrBenchmarkCurveData" required="N"/>
         <field name="OrdType" required="N"/>
         <field name="Currency" required="N"/>
+        <field name="SettlCurrency" required="N"/>
+        <component name="RateSource" required="N"/>
         <field name="MDEntrySize" required="N"/>
         <component name="SecSizesGrp" required="N"/>
         <field name="LotType" required="N"/>
@@ -5017,6 +5225,8 @@
         <field name="MDOriginType" required="N"/>
         <field name="HighPx" required="N"/>
         <field name="LowPx" required="N"/>
+        <field name="FirstPx" required="N"/>
+        <field name="LastPx" required="N"/>
         <field name="TradeVolume" required="N"/>
         <field name="SettlType" required="N"/>
         <field name="SettlDate" required="N"/>
@@ -5043,6 +5253,12 @@
         <field name="AllocMethod" required="N"/>
         <field name="SecondaryIndividualAllocID" required="N"/>
         <field name="AllocClearingFeeIndicator" required="N"/>
+      </group>
+    </component>
+    <component name="NewsRefGrp">
+      <group name="NoNewsRefIDs" required="N">
+        <field name="NewsRefID" required="N"/>
+        <field name="NewsRefType" required="N"/>
       </group>
     </component>
     <component name="Parties">
@@ -5095,6 +5311,12 @@
       <field name="InstrmtAssignmentMethod" required="N"/>
       <field name="SecurityStatus" required="N"/>
       <field name="CouponPaymentDate" required="N"/>
+      <field name="RestructuringType" required="N"/>
+      <field name="Seniority" required="N"/>
+      <field name="NotionalPercentageOutstanding" required="N"/>
+      <field name="OriginalNotionalPercentageOutstanding" required="N"/>
+      <field name="AttachmentPoint" required="N"/>
+      <field name="DetachmentPoint" required="N"/>
       <field name="IssueDate" required="N"/>
       <field name="RepoCollateralSecurityType" required="N"/>
       <field name="RepurchaseTerm" required="N"/>
@@ -5110,8 +5332,14 @@
       <field name="StrikeCurrency" required="N"/>
       <field name="StrikeMultiplier" required="N"/>
       <field name="StrikeValue" required="N"/>
+      <field name="StrikePriceDeterminationMethod" required="N"/>
+      <field name="StrikePriceBoundaryMethod" required="N"/>
+      <field name="StrikePriceBoundaryPrecision" required="N"/>
+      <field name="UnderlyingPriceDeterminationMethod" required="N"/>
       <field name="OptAttribute" required="N"/>
       <field name="ContractMultiplier" required="N"/>
+      <field name="ContractMultiplierUnit" required="N"/>
+      <field name="FlowScheduleType" required="N"/>
       <field name="MinPriceIncrement" required="N"/>
       <field name="MinPriceIncrementAmount" required="N"/>
       <field name="UnitOfMeasure" required="N"/>
@@ -5120,9 +5348,10 @@
       <field name="PriceUnitOfMeasureQty" required="N"/>
       <field name="SettlMethod" required="N"/>
       <field name="ExerciseStyle" required="N"/>
-      <field name="OptPayAmount" required="N"/>
+      <field name="OptPayoutType" required="N"/>
+      <field name="OptPayoutAmount" required="N"/>
       <field name="PriceQuoteMethod" required="N"/>
-      <field name="FuturesValuationMethod" required="N"/>
+      <field name="ValuationMethod" required="N"/>
       <field name="ListMethod" required="N"/>
       <field name="CapPrice" required="N"/>
       <field name="FloorPrice" required="N"/>
@@ -5149,6 +5378,7 @@
       <field name="DatedDate" required="N"/>
       <field name="InterestAccrualDate" required="N"/>
       <component name="InstrumentParties" required="N"/>
+      <component name="ComplexEvents" required="N"/>
     </component>
   </components>
   <fields>
@@ -5278,7 +5508,7 @@
       <value enum="M" description="MEDIUM"/>
     </field>
     <field number="26" name="IOIRefID" type="STRING"/>
-    <field number="27" name="IOIQty" type="STRING">
+    <field number="27" name="IOIQty" type="STRING" allowOtherValues="true">
       <value enum="S" description="SMALL"/>
       <value enum="M" description="MEDIUM"/>
       <value enum="L" description="LARGE"/>
@@ -5368,6 +5598,9 @@
       <value enum="C" description="EMAIL"/>
       <value enum="CA" description="ORDERMASSACTIONREQUEST"/>
       <value enum="CB" description="USERNOTIFICATION"/>
+      <value enum="CC" description="STREAMASSIGNMENTREQUEST"/>
+      <value enum="CD" description="STREAMASSIGNMENTREPORT"/>
+      <value enum="CE" description="STREAMASSIGNMENTREPORTACK"/>
       <value enum="D" description="NEWORDERSINGLE"/>
       <value enum="E" description="NEWORDERLIST"/>
       <value enum="F" description="ORDERCANCELREQUEST"/>
@@ -5483,7 +5716,7 @@
       <value enum="7" description="UNDISCLOSED"/>
       <value enum="8" description="CROSS"/>
       <value enum="9" description="CROSS_SHORT"/>
-      <value enum="A" description="CROSS_SHORT_EXXMPT"/>
+      <value enum="A" description="CROSS_SHORT_EXEMPT"/>
       <value enum="B" description="AS_DEFINED"/>
       <value enum="C" description="OPPOSITE"/>
       <value enum="D" description="SUBSCRIBE"/>
@@ -5600,6 +5833,7 @@
       <value enum="11" description="MISMATCHED_DATA"/>
       <value enum="12" description="UNKNOWN_CLORDID"/>
       <value enum="13" description="WAREHOUSE_REQUEST_REJECTED"/>
+      <value enum="99" description="OTHER_1"/>
     </field>
     <field number="89" name="Signature" type="DATA"/>
     <field number="90" name="SecureDataLen" type="LENGTH"/>
@@ -5667,7 +5901,7 @@
       <value enum="S" description="PORTFOLIO_SHOWN"/>
       <value enum="T" description="THROUGH_THE_DAY"/>
       <value enum="V" description="VERSUS"/>
-      <value enum="W" description="INDIDCATION_WORKING_AWAY"/>
+      <value enum="W" description="INDICATION_WORKING_AWAY"/>
       <value enum="X" description="CROSSING_OPPORTUNITY"/>
       <value enum="Y" description="AT_THE_MIDPOINT"/>
       <value enum="Z" description="PRE_OPEN"/>
@@ -5825,6 +6059,7 @@
       <value enum="CMB" description="CANADIAN_MORTGAGE_BONDS"/>
       <value enum="COFO" description="CERTIFICATE_OF_OBLIGATION"/>
       <value enum="MLEG" description="MULTI_LEG_INSTRUMENT"/>
+      <value enum="FXNDF" description="NON_DELIVERABLE_FORWARD"/>
       <value enum="FADN" description="FEDERAL_AGENCY_DISCOUNT_NOTE"/>
       <value enum="CB" description="CONVERTIBLE_BOND"/>
       <value enum="OPT" description="OPTION"/>
@@ -5835,6 +6070,7 @@
       <value enum="CMBS" description="CORP_MORTGAGE_BACKED_SECURITIES"/>
       <value enum="COFP" description="CERTIFICATE_OF_PARTICIPATION"/>
       <value enum="NONE" description="NO_SECURITY_TYPE"/>
+      <value enum="FXSPOT" description="FX_SPOT"/>
       <value enum="UST" description="US_TREASURY_NOTE"/>
       <value enum="PEF" description="PRIVATE_EXPORT_FUNDING_"/>
       <value enum="DUAL" description="DUAL_CURRENCY"/>
@@ -5845,6 +6081,7 @@
       <value enum="BOX" description="BILL_OF_EXCHANGES"/>
       <value enum="CMO" description="COLLATERALIZED_MORTGAGE_OBLIGATION"/>
       <value enum="GO" description="GENERAL_OBLIGATION_BONDS"/>
+      <value enum="FXFWD" description="FX_FORWARD"/>
       <value enum="USTB" description="US_TREASURY_BILL"/>
       <value enum="SUPRA" description="USD_SUPRANATIONAL_COUPONS_"/>
       <value enum="EUCORP" description="EURO_CORPORATE_BOND"/>
@@ -5855,6 +6092,7 @@
       <value enum="CAMM" description="CANADIAN_MONEY_MARKETS"/>
       <value enum="IET" description="IOETTE_MORTGAGE"/>
       <value enum="MT" description="MANDATORY_TENDER"/>
+      <value enum="FXSWAP" description="FX_SWAP"/>
       <value enum="EUFRN" description="EURO_CORPORATE_FLOATING_RATE_NOTES"/>
       <value enum="IRS" description="INTEREST_RATE_SWAP"/>
       <value enum="TB" description="TREASURY_BILL_NON_US"/>
@@ -6164,8 +6402,8 @@
     </field>
     <field number="264" name="MarketDepth" type="INT"/>
     <field number="265" name="MDUpdateType" type="INT">
-      <value enum="0" description="FULL_REFERSH"/>
-      <value enum="1" description="INCREMENTAL_REFRES"/>
+      <value enum="0" description="FULL_REFRESH"/>
+      <value enum="1" description="INCREMENTAL_REFRESH"/>
     </field>
     <field number="266" name="AggregatedBook" type="BOOLEAN">
       <value enum="Y" description="BOOK_ENTRIES_TO_BE_AGGREGATED"/>
@@ -6205,6 +6443,11 @@
       <value enum="T" description="CUMULATIVE_VALUE_ADJUSTMENT_FOR_LONG_POSITIONS"/>
       <value enum="U" description="DAILY_VALUE_ADJUSTMENT_FOR_SHORT_POSITIONS"/>
       <value enum="V" description="CUMULATIVE_VALUE_ADJUSTMENT_FOR_SHORT_POSITIONS"/>
+      <value enum="W" description="FIXING_PRICE"/>
+      <value enum="X" description="CASH_RATE"/>
+      <value enum="Y" description="RECOVERY_RATE"/>
+      <value enum="Z" description="RECOVERY_RATE_FOR_LONG"/>
+      <value enum="a" description="RECOVERY_RATE_FOR_SHORT"/>
     </field>
     <field number="270" name="MDEntryPx" type="PRICE"/>
     <field number="271" name="MDEntrySize" type="QTY"/>
@@ -6249,7 +6492,7 @@
       <value enum="c" description="REGULAR_ETH"/>
       <value enum="d" description="AUTOMATIC_EXECUTION"/>
       <value enum="e" description="AUTOMATIC_EXECUTION_ETH"/>
-      <value enum="f " description="FAST_MARKET_ETH"/>
+      <value enum="f" description="FAST_MARKET_ETH"/>
       <value enum="g" description="INACTIVE_ETH"/>
       <value enum="h" description="ROTATION"/>
       <value enum="i" description="ROTATION_ETH"/>
@@ -6276,6 +6519,8 @@
       <value enum="3" description="REST_OF_BOOK_VWAP"/>
       <value enum="4" description="BETTER_PRICES_IN_CONDITIONAL_ORDERS"/>
       <value enum="5" description="MEDIAN_PRICE"/>
+      <value enum="6" description="FULL_CURVE"/>
+      <value enum="7" description="FLAT_CURVE"/>
     </field>
     <field number="277" name="TradeCondition" type="MULTIPLESTRINGVALUE">
       <value enum="A" description="CASH_MARKET"/>
@@ -6459,11 +6704,14 @@
       <value enum="20" description="TOO_LATE_TO_END"/>
     </field>
     <field number="298" name="QuoteCancelType" type="INT">
-      <value enum="1" description="CANCEL_FOR_SYMBOL"/>
+      <value enum="1" description="CANCEL_FOR_ONE_OR_MORE_SECURITIES"/>
       <value enum="2" description="CANCEL_FOR_SECURITY_TYPE"/>
-      <value enum="3" description="CANCEL_FOR_UNDERLYING_SYMBOL"/>
+      <value enum="3" description="CANCEL_FOR_UNDERLYING_SECURITY"/>
       <value enum="4" description="CANCEL_ALL_QUOTES"/>
       <value enum="5" description="CANCEL_QUOTE_SPECIFIED_IN_QUOTEID"/>
+      <value enum="6" description="CANCEL_BY_QUOTETYPE"/>
+      <value enum="7" description="CANCEL_FOR_SECURITY_ISSUER"/>
+      <value enum="8" description="CANCEL_FOR_ISSUER_OF_UNDERLYING_SECURITY"/>
     </field>
     <field number="299" name="QuoteEntryID" type="STRING"/>
     <field number="300" name="QuoteRejectReason" type="INT">
@@ -6478,12 +6726,14 @@
       <value enum="9" description="NOT_AUTHORIZED_TO_QUOTE_SECURITY"/>
       <value enum="10" description="PRICE_EXCEEDS_CURRENT_PRICE_BAND"/>
       <value enum="11" description="QUOTE_LOCKED_UNABLE_TO_UPDATE_CANCEL"/>
+      <value enum="12" description="INVALID_OR_UNKNOWN_SECURITY_ISSUER"/>
+      <value enum="13" description="INVALID_OR_UNKNOWN_ISSUER_OF_UNDERLYING_SECURITY"/>
       <value enum="99" description="OTHER"/>
     </field>
     <field number="301" name="QuoteResponseLevel" type="INT">
       <value enum="0" description="NO_ACKNOWLEDGEMENT"/>
       <value enum="1" description="ACKNOWLEDGE_ONLY_NEGATIVE_OR_ERRONEOUS_QUOTES"/>
-      <value enum="2" description="ACKNOWLEDGE_EACH_QUOTE_MESSAGES"/>
+      <value enum="2" description="ACKNOWLEDGE_EACH_QUOTE_MESSAGE"/>
       <value enum="3" description="SUMMARY_ACKNOWLEDGEMENT"/>
     </field>
     <field number="302" name="QuoteSetID" type="STRING"/>
@@ -6530,7 +6780,7 @@
     <field number="324" name="SecurityStatusReqID" type="STRING"/>
     <field number="325" name="UnsolicitedIndicator" type="BOOLEAN">
       <value enum="N" description="MESSAGE_IS_BEING_SENT_AS_A_RESULT_OF_A_PRIOR_REQUEST"/>
-      <value enum="Y" description="MESSAGE_IS_BEING_SECNT_UNSOLICITED"/>
+      <value enum="Y" description="MESSAGE_IS_BEING_SENT_UNSOLICITED"/>
     </field>
     <field number="326" name="SecurityTradingStatus" type="INT">
       <value enum="1" description="OPENING_DELAY"/>
@@ -6557,18 +6807,19 @@
       <value enum="23" description="FAST_MARKET"/>
       <value enum="24" description="PRE_CROSS_SYSTEM_IS_IN_A_PRE_CROSS_STATE_ALLOWING_MARKET_TO_RESPOND_TO_EITHER_SIDE_OF_CROSS"/>
       <value enum="25" description="CROSS_SYSTEM_HAS_CROSSED_A_PERCENTAGE_OF_THE_ORDERS_AND_ALLOWS_MARKET_TO_RESPOND_PRIOR_TO_CROSSING_REMAINING_PORTION"/>
+      <value enum="26" description="POST_CLOSE"/>
     </field>
-    <field number="327" name="HaltReason" type="CHAR">
-      <value enum="D" description="NEWS_DISSEMINATION"/>
-      <value enum="E" description="ORDER_INFLUX"/>
-      <value enum="I" description="ORDER_IMBALANCE"/>
-      <value enum="M" description="ADDITIONAL_INFORMATION"/>
-      <value enum="P" description="NEW_PENDING"/>
-      <value enum="X" description="EQUIPMENT_CHANGEOVER"/>
+    <field number="327" name="HaltReason" type="INT">
+      <value enum="0" description="NEWS_DISSEMINATION"/>
+      <value enum="1" description="ORDER_INFLUX"/>
+      <value enum="2" description="ORDER_IMBALANCE"/>
+      <value enum="3" description="ADDITIONAL_INFORMATION"/>
+      <value enum="4" description="NEWS_PENDING"/>
+      <value enum="5" description="EQUIPMENT_CHANGEOVER"/>
     </field>
     <field number="328" name="InViewOfCommon" type="BOOLEAN">
       <value enum="N" description="HALT_WAS_NOT_RELATED_TO_A_HALT_OF_THE_COMMON_STOCK"/>
-      <value enum="Y" description="HALF_WAS_DUE_TO_COMMON_STOCK_BEING_HALTED"/>
+      <value enum="Y" description="HALT_WAS_DUE_TO_COMMON_STOCK_BEING_HALTED"/>
     </field>
     <field number="329" name="DueToRelated" type="BOOLEAN">
       <value enum="N" description="HALT_WAS_NOT_RELATED_TO_A_HALT_OF_THE_RELATED_SECURITY"/>
@@ -6672,7 +6923,7 @@
       <value enum="0" description="OTHER"/>
       <value enum="1" description="UNKNOWN_ID"/>
       <value enum="2" description="UNKNOWN_SECURITY"/>
-      <value enum="3" description="UNKNOWN_MESSAGE_TYPE"/>
+      <value enum="3" description="UNSUPPORTED_MESSAGE_TYPE"/>
       <value enum="4" description="APPLICATION_NOT_AVAILABLE"/>
       <value enum="5" description="CONDITIONALLY_REQUIRED_FIELD_MISSING"/>
       <value enum="6" description="NOT_AUTHORIZED"/>
@@ -6915,7 +7166,7 @@
       <value enum="43" description="INTERNAL_CARRY_ACCOUNT"/>
       <value enum="44" description="ORDER_ENTRY_OPERATOR_ID"/>
       <value enum="45" description="SECONDARY_ACCOUNT_NUMBER"/>
-      <value enum="46" description="FORIEGN_FIRM"/>
+      <value enum="46" description="FOREIGN_FIRM"/>
       <value enum="47" description="THIRD_PARTY_ALLOCATION_FIRM"/>
       <value enum="48" description="CLAIMING_ACCOUNT"/>
       <value enum="49" description="ASSET_MANAGER"/>
@@ -6951,6 +7202,10 @@
       <value enum="79" description="PRIME_BROKER_PROVIDING_GENERAL_TRADE_SERVICES"/>
       <value enum="80" description="STEP_OUT_FIRM"/>
       <value enum="81" description="BROKERCLEARINGID"/>
+      <value enum="82" description="CENTRAL_REGISTRATION_DEPOSITORY"/>
+      <value enum="83" description="CLEARING_ACCOUNT"/>
+      <value enum="84" description="ACCEPTABLE_SETTLING_COUNTERPARTY"/>
+      <value enum="85" description="UNACCEPTABLE_SETTLING_COUNTERPARTY"/>
     </field>
     <field number="453" name="NoPartyIDs" type="NUMINGROUP"/>
     <field number="454" name="NoSecurityAltID" type="NUMINGROUP"/>
@@ -7211,15 +7466,16 @@
       <value enum="3" description="NON_INDEX_ARBITRAGE"/>
       <value enum="4" description="COMPETING_MARKET_MAKER"/>
       <value enum="5" description="ACTING_AS_MARKET_MAKER_OR_SPECIALIST_IN_THE_SECURITY"/>
-      <value enum="6" description="ACTING_AS_MARKET_MAKER_OF_SPECIALIST_IN_THE_UNDERLYING_SECURITY_OF_A_DERIVATIVE_SEUCIRTY"/>
+      <value enum="6" description="ACTING_AS_MARKET_MAKER_OR_SPECIALIST_IN_THE_UNDERLYING_SECURITY_OF_A_DERIVATIVE_SECURITY"/>
       <value enum="7" description="FOREIGN_ENTITY"/>
       <value enum="8" description="EXTERNAL_MARKET_PARTICIPANT"/>
-      <value enum="9" description="EXTNERAL_INTER_CONNECTED_MARKET_LINKAGE"/>
+      <value enum="9" description="EXTERNAL_INTER_CONNECTED_MARKET_LINKAGE"/>
       <value enum="A" description="RISKLESS_ARBITRAGE"/>
       <value enum="B" description="ISSUER_HOLDING"/>
       <value enum="C" description="ISSUE_PRICE_STABILIZATION"/>
       <value enum="D" description="NON_ALGORITHMIC"/>
       <value enum="E" description="ALGORITHMIC"/>
+      <value enum="F" description="CROSS"/>
     </field>
     <field number="530" name="MassCancelRequestType" type="CHAR">
       <value enum="1" description="CANCEL_ORDERS_FOR_A_SECURITY"/>
@@ -7232,6 +7488,8 @@
       <value enum="8" description="CANCEL_ORDERS_FOR_A_MARKET"/>
       <value enum="9" description="CANCEL_ORDERS_FOR_A_MARKET_SEGMENT"/>
       <value enum="A" description="CANCEL_ORDERS_FOR_A_SECURITY_GROUP"/>
+      <value enum="B" description="CANCEL_FOR_SECURITY_ISSUER"/>
+      <value enum="C" description="CANCEL_FOR_ISSUER_OF_UNDERLYING_SECURITY"/>
     </field>
     <field number="531" name="MassCancelResponse" type="CHAR">
       <value enum="0" description="CANCEL_REQUEST_REJECTED_SEE_MASSCANCELREJECTREASON"/>
@@ -7245,6 +7503,8 @@
       <value enum="8" description="CANCEL_ORDERS_FOR_A_MARKET"/>
       <value enum="9" description="CANCEL_ORDERS_FOR_A_MARKET_SEGMENT"/>
       <value enum="A" description="CANCEL_ORDERS_FOR_A_SECURITY_GROUP"/>
+      <value enum="B" description="CANCEL_ORDERS_FOR_A_SECURITIES_ISSUER"/>
+      <value enum="C" description="CANCEL_ORDERS_FOR_ISSUER_OF_UNDERLYING_SECURITY"/>
     </field>
     <field number="532" name="MassCancelRejectReason" type="INT">
       <value enum="0" description="MASS_CANCEL_NOT_SUPPORTED"/>
@@ -7257,6 +7517,8 @@
       <value enum="7" description="INVALID_OR_UNKNOWN_MARKET"/>
       <value enum="8" description="INVALID_OR_UNKOWN_MARKET_SEGMENT"/>
       <value enum="9" description="INVALID_OR_UNKNOWN_SECURITY_GROUP"/>
+      <value enum="10" description="INVALID_OR_UNKNOWN_SECURITY_ISSUER"/>
+      <value enum="11" description="INVALID_OR_UNKNOWN_ISSUER_OF_UNDERLYING_SECURITY"/>
       <value enum="99" description="OTHER"/>
     </field>
     <field number="533" name="TotalAffectedOrders" type="INT"/>
@@ -7292,10 +7554,10 @@
     </field>
     <field number="548" name="CrossID" type="STRING"/>
     <field number="549" name="CrossType" type="INT">
-      <value enum="1" description="CROSS_AON_CROSS_TADE_WHICH_IS_EXECUTED_COMPLETE_OR_NOT_BOTH_SIDES_ARE_TREATED_IN_THE_SAME_MANNER_THIS_IS_EQUIVALENT_TO_AN_ALL_OR_NONE_"/>
+      <value enum="1" description="CROSS_AON_CROSS_TRADE_WHICH_IS_EXECUTED_COMPLETELY_OR_NOT_BOTH_SIDES_ARE_TREATED_IN_THE_SAME_MANNER_THIS_IS_EQUIVALENT_TO_AN_ALL_OR_NONE_"/>
       <value enum="2" description="CROSS_IOC_CROSS_TRADE_WHICH_IS_EXECUTED_PARTIALLY_AND_THE_REST_IS_CANCELLED_ONE_SIDE_IS_FULLY_EXECUTED_THE_OTHER_SIDE_IS_PARTIALLY_EXECUTED_WITH_THE_REMAINDER_BEING_CANCELLED_THIS_IS_EQUIVALENT_TO_AN_IOC_ON_THE_OTHER_SIDE_NOTE_CROSSPRIORITIZATION_FIELD_MAY_BE_USED_TO_INDICATE_WHICH_SIDE_SHOULD_FULLY_EXECUTE_IN_THIS_SCENARIO_"/>
-      <value enum="3" description="CROSS_ONE_SIDE_CROSS_TRADE_WHICH_IS_PARTIALLY_EXECUTED_WITH_THE_UNFILLED_PORTIONS_REMAINING_ACTIVE_ONE_SIDE_OF_THE_CORSS_IS_FULLY_EXECUTED_BUT_THE_UNFILLED_PORTION_REMAINS_ACTIVE_"/>
-      <value enum="4" description="CROSS_SAME_PRICE_CROSS_TRADE_IS_EXECUTED_WITH_EXISTING_ORDERS_WITH_THE_SAME_PRICE_IN_THIS_CASE_OTHER_ORDERS_EXIST_WITH_THE_SAME_PRICE_THE_QUANTITY_OF_THE_CROSS_IS_EXECUTED_AGAINST_THE_EXISTING_ORDERS_AND_QUOTES_THE_REMAINDER_OF_THE_CORSS_IS_EXECUTED_AGAINST_THE_OTHER_SIDE_OF_THE_CROSS_THE_TWO_SIDES_POTENTIALLY_HAVE_DIFFERENT_QUANTITIES_"/>
+      <value enum="3" description="CROSS_ONE_SIDE_CROSS_TRADE_WHICH_IS_PARTIALLY_EXECUTED_WITH_THE_UNFILLED_PORTIONS_REMAINING_ACTIVE_ONE_SIDE_OF_THE_CROSS_IS_FULLY_EXECUTED_BUT_THE_UNFILLED_PORTION_REMAINS_ACTIVE_"/>
+      <value enum="4" description="CROSS_SAME_PRICE_CROSS_TRADE_IS_EXECUTED_WITH_EXISTING_ORDERS_WITH_THE_SAME_PRICE_IN_THIS_CASE_OTHER_ORDERS_EXIST_WITH_THE_SAME_PRICE_THE_QUANTITY_OF_THE_CROSS_IS_EXECUTED_AGAINST_THE_EXISTING_ORDERS_AND_QUOTES_THE_REMAINDER_OF_THE_CROSS_IS_EXECUTED_AGAINST_THE_OTHER_SIDE_OF_THE_CROSS_THE_TWO_SIDES_POTENTIALLY_HAVE_DIFFERENT_QUANTITIES_"/>
     </field>
     <field number="550" name="CrossPrioritization" type="INT">
       <value enum="0" description="NONE"/>
@@ -7359,7 +7621,7 @@
     <field number="572" name="TradeReportRefID" type="STRING"/>
     <field number="573" name="MatchStatus" type="CHAR">
       <value enum="0" description="COMPARED_MATCHED_OR_AFFIRMED"/>
-      <value enum="1" description="UNCOMPARED_UNMATCHED_OR_UNAFFIRED"/>
+      <value enum="1" description="UNCOMPARED_UNMATCHED_OR_UNAFFIRMED"/>
       <value enum="2" description="ADVISORY_OR_ALERT"/>
     </field>
     <field number="574" name="MatchType" type="STRING">
@@ -7440,6 +7702,8 @@
       <value enum="6" description="STATUS_FOR_ORDERS_FOR_A_TRADING_SESSION"/>
       <value enum="7" description="STATUS_FOR_ALL_ORDERS"/>
       <value enum="8" description="STATUS_FOR_ORDERS_FOR_A_PARTYID"/>
+      <value enum="9" description="STATUS_FOR_SECURITY_ISSUER"/>
+      <value enum="10" description="STATUS_FOR_ISSUER_OF_UNDERLYING_SECURITY"/>
     </field>
     <field number="586" name="OrigOrdModTime" type="UTCTIMESTAMP"/>
     <field number="587" name="LegSettlType" type="CHAR"/>
@@ -7698,6 +7962,9 @@
       <value enum="DN" description="DELIVERY_NOTICE_QTY"/>
       <value enum="EP" description="EXCHANGE_FOR_PHYSICAL_QTY"/>
       <value enum="PNTN" description="PRIVATELY_NEGOTIATED_TRADE_QTY"/>
+      <value enum="DLT" description="NET_DELTA_QTY"/>
+      <value enum="CEA" description="CREDIT_EVENT_ADJUSTMENT"/>
+      <value enum="SEA" description="SUCCESSION_EVENT_ADJUSTMENT"/>
     </field>
     <field number="704" name="LongQty" type="QTY"/>
     <field number="705" name="ShortQty" type="QTY"/>
@@ -7716,6 +7983,15 @@
       <value enum="TVAR" description="TRADE_VARIATION_AMOUNT"/>
       <value enum="VADJ" description="VALUE_ADJUSTED_AMOUNT"/>
       <value enum="SETL" description="SETTLEMENT_VALUE"/>
+      <value enum="ICPN" description="INITIAL_TRADE_COUPON_AMOUNT"/>
+      <value enum="ACPN" description="ACCRUED_COUPON_AMOUNT"/>
+      <value enum="CPN" description="COUPON_AMOUNT"/>
+      <value enum="IACPN" description="INCREMENTAL_ACCRUED_COUPON"/>
+      <value enum="CMTM" description="COLLATERALIZED_MARK_TO_MARKET"/>
+      <value enum="ICMTM" description="INCREMENTAL_COLLATERALIZED_MARK_TO_MARKET"/>
+      <value enum="DLV" description="COMPENSATION_AMOUNT"/>
+      <value enum="BANK" description="TOTAL_BANKED_AMOUNT"/>
+      <value enum="COLAT" description="TOTAL_COLLATERALIZED_AMOUNT"/>
     </field>
     <field number="708" name="PosAmt" type="AMT"/>
     <field number="709" name="PosTransType" type="INT">
@@ -7772,6 +8048,7 @@
       <value enum="3" description="ASSIGNMENTS"/>
       <value enum="4" description="SETTLEMENT_ACTIVITY"/>
       <value enum="5" description="BACKOUT_MESSAGE"/>
+      <value enum="6" description="DELTA_POSITIONS"/>
     </field>
     <field number="725" name="ResponseTransportType" type="INT">
       <value enum="0" description="INBAND_TRANSPORT_THE_REQUEST_WAS_SENT_OVER"/>
@@ -7873,6 +8150,7 @@
       <value enum="4" description="BROKER_RECEIPT"/>
       <value enum="5" description="BROKER_EXECUTION"/>
       <value enum="6" description="DESK_RECEIPT"/>
+      <value enum="7" description="SUBMISSION_TO_CLEARING"/>
     </field>
     <field number="771" name="TrdRegTimestampOrigin" type="STRING"/>
     <field number="772" name="ConfirmRefID" type="STRING"/>
@@ -8114,7 +8392,7 @@
       <value enum="3" description="REJECT_FOR_SUBMITTING_SIDE"/>
       <value enum="4" description="ADVISORY_FOR_CONTRA_SIDE"/>
       <value enum="5" description="OFFSET_DUE_TO_AN_ALLOCATION"/>
-      <value enum="6" description="ONSET_DUT_TO_AN_ALLOCATION"/>
+      <value enum="6" description="ONSET_DUE_TO_AN_ALLOCATION"/>
       <value enum="7" description="DIFFERENTIAL_SPREAD"/>
       <value enum="8" description="IMPLIED_SPREAD_LEG_EXECUTED_AGAINST_AN_OUTRIGHT"/>
       <value enum="9" description="TRANSACTION_FROM_EXERCISE"/>
@@ -8550,10 +8828,15 @@
       <value enum="18" description="MONTHYEAR"/>
       <value enum="19" description="UTCTIMESTAMP"/>
       <value enum="20" description="UTCTIMEONLY"/>
-      <value enum="21" description="LOCALMKTTIME"/>
-      <value enum="22" description="UTCDATE"/>
+      <value enum="21" description="LOCALMKTDATE"/>
+      <value enum="22" description="UTCDATEONLY"/>
       <value enum="23" description="DATA"/>
       <value enum="24" description="MULTIPLESTRINGVALUE"/>
+      <value enum="25" description="COUNTRY"/>
+      <value enum="26" description="LANGUAGE"/>
+      <value enum="27" description="TZTIMEONLY"/>
+      <value enum="28" description="TZTIMESTAMP"/>
+      <value enum="29" description="TENOR"/>
     </field>
     <field number="960" name="StrategyParameterValue" type="STRING"/>
     <field number="961" name="HostCrossID" type="STRING"/>
@@ -8626,6 +8909,7 @@
       <value enum="t" description="METRIC_TONS"/>
       <value enum="tn" description="TONS"/>
       <value enum="USD" description="US_DOLLARS"/>
+      <value enum="Alw" description="ALLOWANCES"/>
     </field>
     <field number="997" name="TimeUnit" type="STRING">
       <value enum="H" description="HOUR"/>
@@ -8650,7 +8934,7 @@
     <field number="1006" name="SideFillStationCd" type="STRING"/>
     <field number="1007" name="SideReasonCd" type="STRING"/>
     <field number="1008" name="SideTrdSubTyp" type="INT"/>
-    <field number="1009" name="SideQty" type="INT"/>
+    <field number="1009" name="SideLastQty" type="INT"/>
     <field number="1011" name="MessageEventSource" type="STRING"/>
     <field number="1012" name="SideTrdRegTimestamp" type="UTCTIMESTAMP"/>
     <field number="1013" name="SideTrdRegTimestampType" type="INT"/>
@@ -8780,7 +9064,11 @@
       <value enum="R" description="ROLLED"/>
       <value enum="F" description="FIFO"/>
     </field>
-    <field number="1048" name="DealingCapacity" type="PRICEOFFSET"/>
+    <field number="1048" name="DealingCapacity" type="CHAR">
+      <value enum="A" description="AGENT"/>
+      <value enum="P" description="PRINCIPAL"/>
+      <value enum="R" description="RISKLESS_PRINCIPAL"/>
+    </field>
     <field number="1049" name="InstrmtAssignmentMethod" type="CHAR"/>
     <field number="1050" name="InstrumentPartyIDSource" type="CHAR"/>
     <field number="1051" name="InstrumentPartyRole" type="INT"/>
@@ -8794,12 +9082,12 @@
       <value enum="N" description="ORDER_INITIATOR_IS_PASSIVE"/>
     </field>
     <field number="1058" name="NoUndlyInstrumentParties" type="NUMINGROUP"/>
-    <field number="1059" name="UndlyInstrumentPartyID" type="STRING"/>
-    <field number="1060" name="UndlyInstrumentPartyIDSource" type="CHAR"/>
-    <field number="1061" name="UndlyInstrumentPartyRole" type="INT"/>
+    <field number="1059" name="UnderlyingInstrumentPartyID" type="STRING"/>
+    <field number="1060" name="UnderlyingInstrumentPartyIDSource" type="CHAR"/>
+    <field number="1061" name="UnderlyingInstrumentPartyRole" type="INT"/>
     <field number="1062" name="NoUndlyInstrumentPartySubIDs" type="NUMINGROUP"/>
-    <field number="1063" name="UndlyInstrumentPartySubID" type="STRING"/>
-    <field number="1064" name="UndlyInstrumentPartySubIDType" type="INT"/>
+    <field number="1063" name="UnderlyingInstrumentPartySubID" type="STRING"/>
+    <field number="1064" name="UnderlyingInstrumentPartySubIDType" type="INT"/>
     <field number="1065" name="BidSwapPoints" type="PRICEOFFSET"/>
     <field number="1066" name="OfferSwapPoints" type="PRICEOFFSET"/>
     <field number="1067" name="LegBidForwardPoints" type="PRICEOFFSET"/>
@@ -8824,6 +9112,7 @@
       <value enum="1" description="ORDERID"/>
       <value enum="2" description="MDENTRYID"/>
       <value enum="3" description="QUOTEENTRYID"/>
+      <value enum="4" description="ORIGINAL_ORDER_ID"/>
     </field>
     <field number="1082" name="SecondaryDisplayQty" type="QTY"/>
     <field number="1083" name="DisplayWhen" type="CHAR">
@@ -8834,6 +9123,7 @@
       <value enum="1" description="INITIAL"/>
       <value enum="2" description="NEW"/>
       <value enum="3" description="RANDOM"/>
+      <value enum="4" description="UNDISCLOSED"/>
     </field>
     <field number="1085" name="DisplayLowQty" type="QTY"/>
     <field number="1086" name="DisplayHighQty" type="QTY"/>
@@ -8852,6 +9142,7 @@
       <value enum="1" description="ODD_LOT"/>
       <value enum="2" description="ROUND_LOT"/>
       <value enum="3" description="BLOCK_LOT"/>
+      <value enum="4" description="ROUND_LOT_BASED_UPON_UNITOFMEASURE"/>
     </field>
     <field number="1094" name="PegPriceType" type="INT">
       <value enum="1" description="LAST_PEG"/>
@@ -8950,6 +9241,7 @@
       <value enum="6" description="FIX44"/>
       <value enum="7" description="FIX50"/>
       <value enum="8" description="FIX50SP1"/>
+      <value enum="9" description="FIX50SP2"/>
     </field>
     <field number="1129" name="CstmApplVerID" type="STRING"/>
     <field number="1130" name="RefApplVerID" type="STRING"/>
@@ -9039,7 +9331,7 @@
       <value enum="3" description="PRICE_VOLATILITY_INTERRUPTION"/>
       <value enum="4" description="CHANGE_OF_TRADING_SESSION"/>
       <value enum="5" description="CHANGE_OF_TRADING_SUBSESSION"/>
-      <value enum="6" description="CHANGE_OF_SECURITY_STATUS"/>
+      <value enum="6" description="CHANGE_OF_SECURITY_TRADING_STATUS"/>
       <value enum="7" description="CHANGE_OF_BOOK_TYPE"/>
       <value enum="8" description="CHANGE_OF_MARKET_DEPTH"/>
     </field>
@@ -9077,16 +9369,19 @@
       <value enum="1" description="AMERICAN"/>
       <value enum="2" description="BERMUDA"/>
     </field>
-    <field number="1195" name="OptPayAmount" type="AMT"/>
+    <field number="1195" name="OptPayoutAmount" type="AMT"/>
     <field number="1196" name="PriceQuoteMethod" type="STRING">
       <value enum="STD" description="STANDARD_MONEY_PER_UNIT_OF_A_PHYSICAL"/>
       <value enum="INX" description="INDEX"/>
       <value enum="INT" description="INTEREST_RATE_INDEX"/>
+      <value enum="PCTPAR" description="PERCENT_OF_PAR"/>
     </field>
-    <field number="1197" name="FuturesValuationMethod" type="STRING">
+    <field number="1197" name="ValuationMethod" type="STRING">
       <value enum="EQTY" description="PREMIUM_STYLE"/>
       <value enum="FUT" description="FUTURES_STYLE_MARK_TO_MARKET"/>
       <value enum="FUTDA" description="FUTURES_STYLE_WITH_AN_ATTACHED_CASH_ADJUSTMENT"/>
+      <value enum="CDS" description="CDS_STYLE_COLLATERALIZATION_OF_MARKET_TO_MARKET_AND_COUPON"/>
+      <value enum="CDSD" description="CDS_IN_DELIVERY_USE_RECOVERY_RATE_TO_CALCULATE_OBLIGATION"/>
     </field>
     <field number="1198" name="ListMethod" type="INT">
       <value enum="0" description="PRE_LISTED_ONLY"/>
@@ -9228,7 +9523,7 @@
     <field number="1316" name="DerivativePriceUnitOfMeasureQty" type="QTY"/>
     <field number="1317" name="DerivativeSettlMethod" type="CHAR"/>
     <field number="1318" name="DerivativePriceQuoteMethod" type="STRING"/>
-    <field number="1319" name="DerivativeFuturesValuationMethod" type="STRING"/>
+    <field number="1319" name="DerivativeValuationMethod" type="STRING"/>
     <field number="1320" name="DerivativeListMethod" type="INT"/>
     <field number="1321" name="DerivativeCapPrice" type="PRICE"/>
     <field number="1322" name="DerivativeFloorPrice" type="PRICE"/>
@@ -9262,6 +9557,8 @@
       <value enum="2" description="REQUEST_FOR_THE_LAST_APPLLASTSEQNUM_PUBLISHED_FOR_THE_SPECIFIED_APPLICATIONS"/>
       <value enum="3" description="REQUEST_VALID_SET_OF_APPLICATIONS"/>
       <value enum="4" description="UNSUBSCRIBE_TO_THE_SPECIFIED_APPLICATIONS"/>
+      <value enum="5" description="CANCEL_RETRANSMISSION"/>
+      <value enum="6" description="CANCEL_RETRANSMISSION_AND_UNSUBSCRIBE_TO_THE_SPECIFIED_APPLICATIONS"/>
     </field>
     <field number="1348" name="ApplResponseType" type="INT">
       <value enum="0" description="REQUEST_SUCCESSFULLY_PROCESSED"/>
@@ -9315,6 +9612,8 @@
       <value enum="8" description="ALL_ORDERS_FOR_A_MARKET"/>
       <value enum="9" description="ALL_ORDERS_FOR_A_MARKET_SEGMENT"/>
       <value enum="10" description="ALL_ORDERS_FOR_A_SECURITY_GROUP"/>
+      <value enum="11" description="CANCEL_FOR_SECURITY_ISSUER"/>
+      <value enum="12" description="CANCEL_FOR_ISSUER_OF_UNDERLYING_SECURITY"/>
     </field>
     <field number="1375" name="MassActionResponse" type="INT">
       <value enum="0" description="REJECTED_SEE_MASSACTIONREJECTREASON"/>
@@ -9331,6 +9630,8 @@
       <value enum="7" description="INVALID_OR_UNKNOWN_MARKET"/>
       <value enum="8" description="INVALID_OR_UNKNOWN_MARKET_SEGMENT"/>
       <value enum="9" description="INVALID_OR_UNKNOWN_SECURITY_GROUP"/>
+      <value enum="10" description="INVALID_OR_UNKNOWN_SECURITY_ISSUER"/>
+      <value enum="11" description="INVALID_OR_UNKNOWN_ISSUER_OF_UNDERLYING_SECURITY"/>
       <value enum="99" description="OTHER"/>
     </field>
     <field number="1377" name="MultilegModel" type="INT">
@@ -9414,6 +9715,220 @@
       <value enum="0" description="RESET_APPLSEQNUM_TO_NEW_VALUE_SPECIFIED_IN_APPLNEWSEQNUM"/>
       <value enum="1" description="REPORTS_THAT_THE_LAST_MESSAGE_HAS_BEEN_SENT_FOR_THE_APPLIDS_REFER_TO_REFAPPLLASTSEQNUM_FOR_THE_APPLICATION_SEQUENCE_NUMBER_OF_THE_LAST_MESSAGE_"/>
       <value enum="2" description="HEARTBEAT_MESSAGE_INDICATING_THAT_APPLICATION_IDENTIFIED_BY_REFAPPLID_FOR_THE_APPLICATION_SEQUENCE_NUMBER_OF_THE_PREVIOUS_MESSAGE_"/>
+      <value enum="3" description="APPLICATION_MESSAGE_RE_SEND_COMPLETED_"/>
+    </field>
+    <field number="1427" name="SideExecID" type="STRING"/>
+    <field number="1428" name="OrderDelay" type="INT"/>
+    <field number="1429" name="OrderDelayUnit" type="INT">
+      <value enum="0" description="SECONDS"/>
+      <value enum="1" description="TENTHS_OF_A_SECOND"/>
+      <value enum="2" description="HUNDREDTHS_OF_A_SECOND"/>
+      <value enum="3" description="MILLISECONDS"/>
+      <value enum="4" description="MICROSECONDS"/>
+      <value enum="5" description="NANOSECONDS"/>
+      <value enum="10" description="MINUTES"/>
+      <value enum="11" description="HOURS"/>
+      <value enum="12" description="DAYS"/>
+      <value enum="13" description="WEEKS"/>
+      <value enum="14" description="MONTHS"/>
+      <value enum="15" description="YEARS"/>
+    </field>
+    <field number="1430" name="VenueType" type="CHAR">
+      <value enum="E" description="ELECTRONIC"/>
+      <value enum="P" description="PIT"/>
+      <value enum="X" description="EX_PIT"/>
+    </field>
+    <field number="1431" name="RefOrdIDReason" type="INT">
+      <value enum="0" description="GTC_FROM_PREVIOUS_DAY"/>
+      <value enum="1" description="PARTIAL_FILL_REMAINING"/>
+      <value enum="2" description="ORDER_CHANGED"/>
+    </field>
+    <field number="1432" name="OrigCustOrderCapacity" type="INT">
+      <value enum="1" description="MEMBER_TRADING_FOR_THEIR_OWN_ACCOUNT"/>
+      <value enum="2" description="CLEARING_FIRM_TRADING_FOR_ITS_PROPRIETARY_ACCOUNT"/>
+      <value enum="3" description="MEMBER_TRADING_FOR_ANOTHER_MEMBER"/>
+      <value enum="4" description="ALL_OTHER"/>
+    </field>
+    <field number="1433" name="RefApplReqID" type="STRING"/>
+    <field number="1434" name="ModelType" type="INT">
+      <value enum="0" description="UTILITY_PROVIDED_STANDARD_MODEL"/>
+      <value enum="1" description="PROPRIETARY_MODEL"/>
+    </field>
+    <field number="1435" name="ContractMultiplierUnit" type="INT">
+      <value enum="0" description="SHARES"/>
+      <value enum="1" description="HOURS"/>
+      <value enum="2" description="DAYS"/>
+    </field>
+    <field number="1436" name="LegContractMultiplierUnit" type="INT"/>
+    <field number="1437" name="UnderlyingContractMultiplierUnit" type="INT"/>
+    <field number="1438" name="DerivativeContractMultiplierUnit" type="INT"/>
+    <field number="1439" name="FlowScheduleType" type="INT">
+      <value enum="0" description="NERC_EASTERN_OFF_PEAK"/>
+      <value enum="1" description="NERC_WESTERN_OFF_PEAK"/>
+      <value enum="2" description="NERC_CALENDAR_ALL_DAYS_IN_MONTH"/>
+      <value enum="3" description="NERC_EASTERN_PEAK"/>
+      <value enum="4" description="NERC_WESTERN_PEAK"/>
+    </field>
+    <field number="1440" name="LegFlowScheduleType" type="INT"/>
+    <field number="1441" name="UnderlyingFlowScheduleType" type="INT"/>
+    <field number="1442" name="DerivativeFlowScheduleType" type="INT"/>
+    <field number="1443" name="FillLiquidityInd" type="INT"/>
+    <field number="1444" name="SideLiquidityInd" type="INT"/>
+    <field number="1445" name="NoRateSources" type="NUMINGROUP"/>
+    <field number="1446" name="RateSource" type="INT">
+      <value enum="0" description="BLOOMBERG"/>
+      <value enum="1" description="REUTERS"/>
+      <value enum="2" description="TELERATE"/>
+      <value enum="99" description="OTHER"/>
+    </field>
+    <field number="1447" name="RateSourceType" type="INT">
+      <value enum="0" description="PRIMARY"/>
+      <value enum="1" description="SECONDARY"/>
+    </field>
+    <field number="1448" name="ReferencePage" type="STRING"/>
+    <field number="1449" name="RestructuringType" type="STRING">
+      <value enum="FR" description="FULL_RESTRUCTURING"/>
+      <value enum="MR" description="MODIFIED_RESTRUCTURING"/>
+      <value enum="MM" description="MODIFIED_MOD_RESTRUCTURING"/>
+      <value enum="XR" description="NO_RESTRUCTURING_SPECIFIED"/>
+    </field>
+    <field number="1450" name="Seniority" type="STRING">
+      <value enum="SD" description="SENIOR_SECURED"/>
+      <value enum="SR" description="SENIOR"/>
+      <value enum="SB" description="SUBORDINATED"/>
+    </field>
+    <field number="1451" name="NotionalPercentageOutstanding" type="PERCENTAGE"/>
+    <field number="1452" name="OriginalNotionalPercentageOutstanding" type="PERCENTAGE"/>
+    <field number="1453" name="UnderlyingRestructuringType" type="STRING"/>
+    <field number="1454" name="UnderlyingSeniority" type="STRING"/>
+    <field number="1455" name="UnderlyingNotionalPercentageOutstanding" type="PERCENTAGE"/>
+    <field number="1456" name="UnderlyingOriginalNotionalPercentageOutstanding" type="PERCENTAGE"/>
+    <field number="1457" name="AttachmentPoint" type="PERCENTAGE"/>
+    <field number="1458" name="DetachmentPoint" type="PERCENTAGE"/>
+    <field number="1459" name="UnderlyingAttachmentPoint" type="PERCENTAGE"/>
+    <field number="1460" name="UnderlyingDetachmentPoint" type="PERCENTAGE"/>
+    <field number="1461" name="NoTargetPartyIDs" type="NUMINGROUP"/>
+    <field number="1462" name="TargetPartyID" type="STRING"/>
+    <field number="1463" name="TargetPartyIDSource" type="CHAR"/>
+    <field number="1464" name="TargetPartyRole" type="INT"/>
+    <field number="1465" name="SecurityListID" type="STRING"/>
+    <field number="1466" name="SecurityListRefID" type="STRING"/>
+    <field number="1467" name="SecurityListDesc" type="STRING"/>
+    <field number="1468" name="EncodedSecurityListDescLen" type="LENGTH"/>
+    <field number="1469" name="EncodedSecurityListDesc" type="DATA"/>
+    <field number="1470" name="SecurityListType" type="INT">
+      <value enum="1" description="INDUSTRY_CLASSIFICATION"/>
+      <value enum="2" description="TRADING_LIST"/>
+      <value enum="3" description="MARKET_MARKET_SEGMENT_LIST"/>
+      <value enum="4" description="NEWSPAPER_LIST"/>
+    </field>
+    <field number="1471" name="SecurityListTypeSource" type="INT">
+      <value enum="1" description="ICB_PUBLISHED_BY_DOW_JONES_AND_FTSE_WWW_ICBENCHMARK_COM"/>
+      <value enum="2" description="NAICS_WWW_CENSUS_GOV_NAICS_OR_WWW_NAICS_COM_"/>
+      <value enum="3" description="GICS_PUBLISHED_BY_STANDARDS_POOR"/>
+    </field>
+    <field number="1472" name="NewsID" type="STRING"/>
+    <field number="1473" name="NewsCategory" type="INT">
+      <value enum="0" description="COMPANY_NEWS"/>
+      <value enum="1" description="MARKETPLACE_NEWS"/>
+      <value enum="2" description="FINANCIAL_MARKET_NEWS"/>
+      <value enum="3" description="TECHNICAL_NEWS"/>
+      <value enum="99" description="OTHER_NEWS"/>
+    </field>
+    <field number="1474" name="LanguageCode" type="LANGUAGE"/>
+    <field number="1475" name="NoNewsRefIDs" type="NUMINGROUP"/>
+    <field number="1476" name="NewsRefID" type="STRING"/>
+    <field number="1477" name="NewsRefType" type="INT">
+      <value enum="0" description="REPLACEMENT"/>
+      <value enum="1" description="OTHER_LANGUAGE"/>
+      <value enum="2" description="COMPLIMENTARY"/>
+    </field>
+    <field number="1478" name="StrikePriceDeterminationMethod" type="INT">
+      <value enum="1" description="FIXED_STRIKE"/>
+      <value enum="2" description="STRIKE_SET_AT_EXPIRATION_TO_UNDERLYING_OR_OTHER_VALUE"/>
+      <value enum="3" description="STRIKE_SET_TO_AVERAGE_OF_UNDERLYING_SETTLEMENT_PRICE_ACROSS_THE_LIFE_OF_THE_OPTION"/>
+      <value enum="4" description="STRIKE_SET_TO_OPTIMAL_VALUE"/>
+    </field>
+    <field number="1479" name="StrikePriceBoundaryMethod" type="INT">
+      <value enum="1" description="LESS_THAN_UNDERLYING_PRICE_IS_IN_THE_MONEY"/>
+      <value enum="2" description="LESS_THAN_OR_EQUAL_TO_THE_UNDERLYING_PRICE_IS_IN_THE_MONEY"/>
+      <value enum="3" description="EQUAL_TO_THE_UNDERLYING_PRICE_IS_IN_THE_MONEY"/>
+      <value enum="4" description="GREATER_THAN_OR_EQUAL_TO_UNDERLYING_PRICE_IS_IN_THE_MONEY"/>
+      <value enum="5" description="GREATER_THAN_UNDERLYING_IS_IN_THE_MONEY"/>
+    </field>
+    <field number="1480" name="StrikePriceBoundaryPrecision" type="PERCENTAGE"/>
+    <field number="1481" name="UnderlyingPriceDeterminationMethod" type="INT">
+      <value enum="1" description="REGULAR"/>
+      <value enum="2" description="SPECIAL_REFERENCE"/>
+      <value enum="3" description="OPTIMAL_VALUE"/>
+      <value enum="4" description="AVERAGE_VALUE"/>
+    </field>
+    <field number="1482" name="OptPayoutType" type="INT">
+      <value enum="1" description="VANILLA"/>
+      <value enum="2" description="CAPPED"/>
+      <value enum="3" description="BINARY"/>
+    </field>
+    <field number="1483" name="NoComplexEvents" type="NUMINGROUP"/>
+    <field number="1484" name="ComplexEventType" type="INT">
+      <value enum="1" description="CAPPED"/>
+      <value enum="2" description="TRIGGER"/>
+      <value enum="3" description="KNOCK_IN_UP"/>
+      <value enum="4" description="KOCK_IN_DOWN"/>
+      <value enum="5" description="KNOCK_OUT_UP"/>
+      <value enum="6" description="KNOCK_OUT_DOWN"/>
+      <value enum="7" description="UNDERLYING"/>
+      <value enum="8" description="RESET_BARRIER"/>
+      <value enum="9" description="ROLLING_BARRIER"/>
+    </field>
+    <field number="1485" name="ComplexOptPayoutAmount" type="AMT"/>
+    <field number="1486" name="ComplexEventPrice" type="PRICE"/>
+    <field number="1487" name="ComplexEventPriceBoundaryMethod" type="INT">
+      <value enum="1" description="LESS_THAN_COMPLEXEVENTPRICE"/>
+      <value enum="2" description="LESS_THAN_OR_EQUAL_TO_COMPLEXEVENTPRICE"/>
+      <value enum="3" description="EQUAL_TO_COMPLEXEVENTPRICE"/>
+      <value enum="4" description="GREATER_THAN_OR_EQUAL_TO_COMPLEXEVENTPRICE"/>
+      <value enum="5" description="GREATER_THAN_COMPLEXEVENTPRICE"/>
+    </field>
+    <field number="1488" name="ComplexEventPriceBoundaryPrecision" type="PERCENTAGE"/>
+    <field number="1489" name="ComplexEventPriceTimeType" type="INT">
+      <value enum="1" description="EXPIRATION"/>
+      <value enum="2" description="IMMEDIATE"/>
+      <value enum="3" description="SPECIFIED_DATE_TIME"/>
+    </field>
+    <field number="1490" name="ComplexEventCondition" type="INT">
+      <value enum="1" description="AND"/>
+      <value enum="2" description="OR"/>
+    </field>
+    <field number="1491" name="NoComplexEventDates" type="NUMINGROUP"/>
+    <field number="1492" name="ComplexEventStartDate" type="UTCTIMESTAMP"/>
+    <field number="1493" name="ComplexEventEndDate" type="UTCTIMESTAMP"/>
+    <field number="1494" name="NoComplexEventTimes" type="NUMINGROUP"/>
+    <field number="1495" name="ComplexEventStartTime" type="UTCTIMEONLY"/>
+    <field number="1496" name="ComplexEventEndTime" type="UTCTIMEONLY"/>
+    <field number="1497" name="StreamAsgnReqID" type="STRING"/>
+    <field number="1498" name="StreamAsgnReqType" type="INT">
+      <value enum="1" description="STREAM_ASSIGNMENT_FOR_NEW_CUSTOMER"/>
+      <value enum="2" description="STREAM_ASSIGNMENT_FOR_EXISTING_CUSTOMER"/>
+    </field>
+    <field number="1499" name="NoAsgnReqs" type="NUMINGROUP"/>
+    <field number="1500" name="MDStreamID" type="STRING"/>
+    <field number="1501" name="StreamAsgnRptID" type="STRING"/>
+    <field number="1502" name="StreamAsgnRejReason" type="INT">
+      <value enum="0" description="UNKNOWN_CLIENT"/>
+      <value enum="1" description="EXCEEDS_MAXIMUM_SIZE"/>
+      <value enum="2" description="UNKNOWN_OR_INVALID_CURRENCY_PAIR"/>
+      <value enum="3" description="NO_AVAILABLE_STREAM"/>
+      <value enum="99" description="OTHER"/>
+    </field>
+    <field number="1503" name="StreamAsgnAckType" type="INT">
+      <value enum="0" description="ASSIGNMENT_ACCEPTED"/>
+      <value enum="1" description="ASSIGNMENT_REJECTED"/>
+    </field>
+    <field number="1504" name="RelSymTransactTime" type="UTCTIMESTAMP"/>
+    <field number="1617" name="StreamAsgnType" type="INT">
+      <value enum="1" description="ASSIGNMENT"/>
+      <value enum="2" description="REJECTED"/>
+      <value enum="3" description="TERMINATE_UNASSIGN"/>
     </field>
   </fields>
 </fix>

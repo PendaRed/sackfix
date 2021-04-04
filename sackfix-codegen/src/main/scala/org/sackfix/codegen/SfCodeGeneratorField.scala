@@ -2,6 +2,7 @@ package org.sackfix.codegen
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import scala.collection.mutable.ArrayBuffer
 
 /**
   * Created by Jonathan during 2016.
@@ -33,7 +34,7 @@ class SfCodeGeneratorField(val packageName:String, val fieldDet:FixFieldDetail) 
     * For a field definition this generates the full class file.
     */
   def generateFieldClassStr : String = {
-    val fldVals: Seq[FixValueDetail] = fieldDet.subElements.collect({ case fvv:FixValueDetail => fvv })
+    val fldVals = fieldDet.subElements.collect({ case fvv:FixValueDetail => fvv })
     val cname=fieldDet.name+"Field"
 
     val valuePart = {if (generateFieldType=="Boolean") """{if (value) "Y" else "N"}""" else "value"}
@@ -99,7 +100,7 @@ class SfCodeGeneratorField(val packageName:String, val fieldDet:FixFieldDetail) 
   private def generateObjectConstantsForEnums :String = {
 //    val fldVals1: Seq[FixValueDetail] = fieldDet.subElements.filter(_.isInstanceOf[FixValueDetail]).
 //      map(_.asInstanceOf[FixValueDetail])
-    val fldVals: Seq[FixValueDetail] = fieldDet.subElements.collect({ case fvv:FixValueDetail => fvv })
+    val fldVals: ArrayBuffer[FixValueDetail] = fieldDet.subElements.collect({ case fvv:FixValueDetail => fvv })
 
     val delim = getFieldValueTypeDelimter
     if (fldVals.isEmpty) ""

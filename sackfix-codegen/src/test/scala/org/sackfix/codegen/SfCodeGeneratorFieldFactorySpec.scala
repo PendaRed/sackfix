@@ -2,19 +2,20 @@ package org.sackfix.codegen
 
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
+import org.scalatest.flatspec.AnyFlatSpec
 
-import org.scalatest.FlatSpec
+import scala.collection.mutable.ArrayBuffer
 
 /**
   * Created by Jonathan during 2016.
   */
-class SfCodeGeneratorFieldFactorySpec extends FlatSpec  with SfGeneratorTestUtil {
+class SfCodeGeneratorFieldFactorySpec extends AnyFlatSpec  with SfGeneratorTestUtil {
   behavior of "SfCodeGeneratorFieldFactory"
 
   val codeGen: SfCodeGeneratorFieldFactory = new SfCodeGeneratorFieldFactory(
     "sourceXmlSpenFileName", "com.test",
     "MyTestClass",
-    List(new FixFieldDetail("263", "SubscriptionRequestType", "CHAR"),
+    ArrayBuffer(new FixFieldDetail("263", "SubscriptionRequestType", "CHAR"),
       new FixFieldDetail("254", "LegRedemptionDate", "LOCALMKTDATE")))
 
   it should "generate a very simple field class" in {
