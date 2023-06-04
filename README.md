@@ -1,4 +1,4 @@
-<a href="https://pendared.github.io/"><img src ="https://pendared.github.io/sackfix/assets/sf_logo.png" /></a>
+<a href="https://pendared.github.io/sackfix/"><img src ="https://pendared.github.io/sackfix/assets/sf_logo.png" /></a>
 
 # SackFix
 
