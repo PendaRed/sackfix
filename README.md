@@ -1,4 +1,4 @@
-<a href="http://www.sackfix.org/"><img src ="http://www.sackfix.org/assets/sf_logo.png" /></a>
+<a href="https://pendared.github.io/"><img src ="https://pendared.github.io/sackfix/assets/sf_logo.png" /></a>
 
 # SackFix
 
@@ -52,4 +52,4 @@ sbt clean packageLocal
 Best wishes,
 Jonathan
 
-<a href="http://www.sackfix.org/"><img src ="http://www.sackfix.org/assets/sackfix.png" /></a>
+<a href="https://pendared.github.io/sackfix/"><img src ="https://pendared.github.io/sackfix/assets/sackfix.png" /></a>
